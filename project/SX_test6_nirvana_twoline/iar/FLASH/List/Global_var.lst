@@ -1,0 +1,239 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.30.3.8024/W32 for ARM        12/Jul/2016  22:02:52
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\app\Global_var.c
+#    Command line =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\app\Global_var.c
+#        -D LPLD_K60 -D USE_K60D10 -lCN
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\
+#        -lB
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\
+#        -o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config
+#        D:\IAR\arm\INC\c\DLib_Config_Normal.h -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\app\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\class\
+#        -Ol -I D:\IAR\arm\CMSIS\Include\ -D ARM_MATH_CM4
+#    List file    =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\Global_var.lst
+#    Object file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\Global_var.o
+#
+###############################################################################
+
+C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\app\Global_var.c
+      1          #include "include.h"
+      2          
+
+   \                                 In section .bss, align 1
+      3          uint8 device_id = 0;
+   \                     device_id:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 4
+      4          uint8 Pix_Data[600];       //采集60行 80列的图像数据
+   \                     Pix_Data:
+   \   00000000                      DS8 600
+
+   \                                 In section .bss, align 4
+      5          uint8 Pix_Data_prev[600];       //采集60行 80列的图像数据
+   \                     Pix_Data_prev:
+   \   00000000                      DS8 600
+      6          
+      7          
+      8          
+
+   \                                 In section .bss, align 4
+      9          uint8 Img[60][80];           //解压后的数据
+   \                     Img:
+   \   00000000                      DS8 4800
+
+   \                                 In section .bss, align 4
+     10          uint8 Img_prve[60][80];     //上一帧
+   \                     Img_prve:
+   \   00000000                      DS8 4800
+
+   \                                 In section .bss, align 4
+     11          uint8 Img_current[60][80]; //当前帧
+   \                     Img_current:
+   \   00000000                      DS8 4800
+
+   \                                 In section .bss, align 1
+     12          uint8 camera_flag = 0;         //0表示不可采集，1表示可以采集
+   \                     camera_flag:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 1
+     13          uint8 show_img_flag = 0;       //0表示不可显示，1表示可以显示
+   \                     show_img_flag:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 4
+     14          int pixchange_flag=0;
+   \                     pixchange_flag:
+   \   00000000                      DS8 4
+     15          
+
+   \                                 In section .bss, align 4
+     16          int pixel_left;
+   \                     pixel_left:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     17          int pixel_right;
+   \                     pixel_right:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     18          float steering_err = 0;
+   \                     steering_err:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     19          float steering_errprev=0;
+   \                     steering_errprev:
+   \   00000000                      DS8 4
+
+   \                                 In section .data, align 4
+     20          float steering_p = 20;
+   \                     steering_p:
+   \   00000000   0x41A00000         DC32 41A00000H
+
+   \                                 In section .data, align 4
+     21          float steering_d = 20;
+   \                     steering_d:
+   \   00000000   0x41A00000         DC32 41A00000H
+     22          
+
+   \                                 In section .data, align 4
+     23          int steering_middle = 775
+   \                     steering_middle:
+   \   00000000   0x00000307         DC32 775
+     24          ;
+
+   \                                 In section .data, align 4
+     25          int steering_left = 565;
+   \                     steering_left:
+   \   00000000   0x00000235         DC32 565
+
+   \                                 In section .data, align 4
+     26          int steering_right = 955;
+   \                     steering_right:
+   \   00000000   0x000003BB         DC32 955
+
+   \                                 In section .data, align 4
+     27          float steering_out = 775;
+   \                     steering_out:
+   \   00000000   0x4441C000         DC32 4441C000H
+     28          
+     29          
+     30          
+
+   \                                 In section .bss, align 4
+     31          int Left_Line[60];
+   \                     Left_Line:
+   \   00000000                      DS8 240
+
+   \                                 In section .bss, align 4
+     32          int Right_Line[60];
+   \                     Right_Line:
+   \   00000000                      DS8 240
+
+   \                                 In section .bss, align 4
+     33          int Center_Line[60];
+   \                     Center_Line:
+   \   00000000                      DS8 240
+     34          
+     35          
+     36          
+
+   \                                 In section .bss, align 1
+     37          uint8 turn_right=0;
+   \                     turn_right:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 1
+     38          uint8 turn_left=0;
+   \                     turn_left:
+   \   00000000                      DS8 1
+
+   \                                 In section .data, align 1
+     39          uint8 prev_mid=40;
+   \                     prev_mid:
+   \   00000000   0x28               DC8 40
+     40          
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+     240  Center_Line
+    4800  Img
+    4800  Img_current
+    4800  Img_prve
+     240  Left_Line
+     600  Pix_Data
+     600  Pix_Data_prev
+     240  Right_Line
+       1  camera_flag
+       1  device_id
+       4  pixchange_flag
+       4  pixel_left
+       4  pixel_right
+       1  prev_mid
+       1  show_img_flag
+       4  steering_d
+       4  steering_err
+       4  steering_errprev
+       4  steering_left
+       4  steering_middle
+       4  steering_out
+       4  steering_p
+       4  steering_right
+       1  turn_left
+       1  turn_right
+
+ 
+ 16 345 bytes in section .bss
+     25 bytes in section .data
+ 
+ 16 370 bytes of DATA memory
+
+Errors: none
+Warnings: none

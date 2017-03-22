@@ -1,0 +1,142 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.30.3.8024/W32 for ARM        12/Jul/2016  22:02:58
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\app\Motor_Control.c
+#    Command line =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\app\Motor_Control.c
+#        -D LPLD_K60 -D USE_K60D10 -lCN
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\
+#        -lB
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\
+#        -o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config
+#        D:\IAR\arm\INC\c\DLib_Config_Normal.h -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\app\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\USB\class\
+#        -Ol -I D:\IAR\arm\CMSIS\Include\ -D ARM_MATH_CM4
+#    List file    =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\Motor_Control.lst
+#    Object file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\Motor_Control.o
+#
+###############################################################################
+
+C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\app\Motor_Control.c
+      1          #include "common.h"
+      2          #include "include.h"
+      3          
+
+   \                                 In section .bss, align 4
+      4          FTM_InitTypeDef motor_init_struct;
+   \                     motor_init_struct:
+   \   00000000                      DS8 28
+      5          
+
+   \                                 In section .text, align 4, keep-with-next
+      6          void motor_init()
+      7          {
+   \                     motor_init: (+1)
+   \   00000000   0xB5E0             PUSH     {R5-R7,LR}
+      8            motor_init_struct.FTM_Ftmx=FTM0;
+   \   00000002   0x4812             LDR.N    R0,??motor_init_0  ;; 0x40038000
+   \   00000004   0x4912             LDR.N    R1,??motor_init_0+0x4
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+      9            motor_init_struct.FTM_Mode=FTM_MODE_PWM;
+   \   00000008   0x2001             MOVS     R0,#+1
+   \   0000000A   0x4911             LDR.N    R1,??motor_init_0+0x4
+   \   0000000C   0x7108             STRB     R0,[R1, #+4]
+     10            motor_init_struct.FTM_PwmFreq=25000;
+   \   0000000E   0xF246 0x10A8      MOVW     R0,#+25000
+   \   00000012   0x490F             LDR.N    R1,??motor_init_0+0x4
+   \   00000014   0x6088             STR      R0,[R1, #+8]
+     11            LPLD_FTM_Init(motor_init_struct);
+   \   00000016   0x490E             LDR.N    R1,??motor_init_0+0x4
+   \   00000018   0xB084             SUB      SP,SP,#+16
+   \   0000001A   0x4668             MOV      R0,SP
+   \   0000001C   0x221C             MOVS     R2,#+28
+   \   0000001E   0x.... 0x....      BL       __aeabi_memcpy4
+   \   00000022   0xBC0F             POP      {R0-R3}
+   \   00000024   0x.... 0x....      BL       LPLD_FTM_Init
+     12            LPLD_FTM_PWM_Enable(FTM0,FTM_Ch2,1500,PTC3,ALIGN_LEFT);
+   \   00000028   0x2028             MOVS     R0,#+40
+   \   0000002A   0x9000             STR      R0,[SP, #+0]
+   \   0000002C   0x233F             MOVS     R3,#+63
+   \   0000002E   0xF240 0x52DC      MOVW     R2,#+1500
+   \   00000032   0x2102             MOVS     R1,#+2
+   \   00000034   0x4805             LDR.N    R0,??motor_init_0  ;; 0x40038000
+   \   00000036   0x.... 0x....      BL       LPLD_FTM_PWM_Enable
+     13            LPLD_FTM_PWM_Enable(FTM0,FTM_Ch3,0,PTC4,ALIGN_LEFT);
+   \   0000003A   0x2028             MOVS     R0,#+40
+   \   0000003C   0x9000             STR      R0,[SP, #+0]
+   \   0000003E   0x2340             MOVS     R3,#+64
+   \   00000040   0x2200             MOVS     R2,#+0
+   \   00000042   0x2103             MOVS     R1,#+3
+   \   00000044   0x4801             LDR.N    R0,??motor_init_0  ;; 0x40038000
+   \   00000046   0x.... 0x....      BL       LPLD_FTM_PWM_Enable
+     14          }
+   \   0000004A   0xBD07             POP      {R0-R2,PC}       ;; return
+   \                     ??motor_init_0:
+   \   0000004C   0x40038000         DC32     0x40038000
+   \   00000050   0x........         DC32     motor_init_struct
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      32   motor_init
+        16   -> LPLD_FTM_Init
+        16   -> LPLD_FTM_PWM_Enable
+        32   -> __aeabi_memcpy4
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      84  motor_init
+      28  motor_init_struct
+
+ 
+ 28 bytes in section .bss
+ 84 bytes in section .text
+ 
+ 84 bytes of CODE memory
+ 28 bytes of DATA memory
+
+Errors: none
+Warnings: none

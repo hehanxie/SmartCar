@@ -1,0 +1,166 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.20.2.7424/W32 for ARM        22/Dec/2015  18:54:50
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\app\Global_var.c
+#    Command line =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\app\Global_var.c
+#        -D LPLD_K60 -D USE_K60D10 -lCN
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\List\
+#        -lB
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\List\
+#        -o
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\Obj\
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench
+#        7.0\arm\INC\c\DLib_Config_Normal.h" -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\app\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\common\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\class\
+#        -Ol -I "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.0\arm\CMSIS\Include\" -D ARM_MATH_CM4
+#    List file    =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\List\Global_var.lst
+#    Object file  =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\Obj\Global_var.o
+#
+###############################################################################
+
+C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\app\Global_var.c
+      1          #include "include.h"
+      2          
+
+   \                                 In section .bss, align 1
+      3          uint8 device_id = 0;
+   \                     device_id:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 4
+      4          uint8 Pix_Data[600];       //采集60行 80列的图像数据
+   \                     Pix_Data:
+   \   00000000                      DS8 600
+
+   \                                 In section .bss, align 4
+      5          uint8 Img[60][80];           //解压后的数据
+   \                     Img:
+   \   00000000                      DS8 4800
+
+   \                                 In section .bss, align 4
+      6          uint8 Img_prve[60][80];     //上一帧
+   \                     Img_prve:
+   \   00000000                      DS8 4800
+
+   \                                 In section .bss, align 1
+      7          uint8 camera_flag = 0;         //0表示不可采集，1表示可以采集
+   \                     camera_flag:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 1
+      8          uint8 show_img_flag = 0;       //0表示不可显示，1表示可以显示
+   \                     show_img_flag:
+   \   00000000                      DS8 1
+      9          
+
+   \                                 In section .bss, align 4
+     10          int pixel_left;
+   \                     pixel_left:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     11          int pixel_right;
+   \                     pixel_right:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     12          float steering_err = 0;
+   \                     steering_err:
+   \   00000000                      DS8 4
+
+   \                                 In section .data, align 4
+     13          float steering_p = 10;
+   \                     steering_p:
+   \   00000000   0x41200000         DC32 41200000H
+     14          
+     15          
+
+   \                                 In section .data, align 4
+     16          int steering_middle = 775;
+   \                     steering_middle:
+   \   00000000   0x00000307         DC32 775
+
+   \                                 In section .data, align 4
+     17          int steering_left = 565;
+   \                     steering_left:
+   \   00000000   0x00000235         DC32 565
+
+   \                                 In section .data, align 4
+     18          int steering_right = 955;
+   \                     steering_right:
+   \   00000000   0x000003BB         DC32 955
+
+   \                                 In section .data, align 4
+     19          float sterring_out = 775;
+   \                     sterring_out:
+   \   00000000   0x4441C000         DC32 4441C000H
+     20          
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+    4800  Img
+    4800  Img_prve
+     600  Pix_Data
+       1  camera_flag
+       1  device_id
+       4  pixel_left
+       4  pixel_right
+       1  show_img_flag
+       4  steering_err
+       4  steering_left
+       4  steering_middle
+       4  steering_p
+       4  steering_right
+       4  sterring_out
+
+ 
+ 10 215 bytes in section .bss
+     20 bytes in section .data
+ 
+ 10 235 bytes of DATA memory
+
+Errors: none
+Warnings: none

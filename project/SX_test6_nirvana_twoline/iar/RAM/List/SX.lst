@@ -1,0 +1,201 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.20.2.7424/W32 for ARM        22/Dec/2015  18:54:51
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\app\SX.c
+#    Command line =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\app\SX.c
+#        -D LPLD_K60 -D USE_K60D10 -lCN
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\List\
+#        -lB
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\List\
+#        -o
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\Obj\
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench
+#        7.0\arm\INC\c\DLib_Config_Normal.h" -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\app\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\common\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\..\..\..\lib\USB\class\
+#        -Ol -I "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.0\arm\CMSIS\Include\" -D ARM_MATH_CM4
+#    List file    =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\List\SX.lst
+#    Object file  =  
+#        C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\iar\RAM\Obj\SX.o
+#
+###############################################################################
+
+C:\Users\a3910\Desktop\Freescale\K60_LPLD\LPLD_OSKinetis_V3\project\SX_test4\app\SX.c
+      1          /*
+      2           * --------------基于"拉普兰德K60底层库V3"的工程（SX）-----------------
+      3           * @file SX.c
+      4           * @version 0.0
+      5           * @date 2015-12-14
+      6           * @brief 关于该工程的描述
+      7           */
+      8          #include "include.h"
+      9             
+
+   \                                 In section .bss, align 1
+     10          uint8 key=0;
+   \                     key:
+   \   00000000                      DS8 1
+     11             
+
+   \                                 In section .text, align 4, keep-with-next
+     12          void main (void)
+     13          {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     14            init_all();
+   \   00000002   0x.... 0x....      BL       init_all
+   \   00000006   0xE022             B.N      ??main_0
+     15            while(1)
+     16            {
+     17              get_img();
+     18              LED_PrintImage(*Img, 60, 80);
+     19              key=key_scan();
+     20              if(key==1)
+     21              {
+     22                steering_p=steering_p+0.1;
+     23              }
+     24                else if(key==2)
+   \                     ??main_1: (+1)
+   \   00000008   0x481F             LDR.N    R0,??main_2
+   \   0000000A   0x7800             LDRB     R0,[R0, #+0]
+   \   0000000C   0x2802             CMP      R0,#+2
+   \   0000000E   0xD10B             BNE.N    ??main_3
+     25                {
+     26                steering_p=steering_p-0.1;
+   \   00000010   0x481E             LDR.N    R0,??main_2+0x4
+   \   00000012   0x6800             LDR      R0,[R0, #+0]
+   \   00000014   0x.... 0x....      BL       __aeabi_f2d
+   \   00000018   0x4A1D             LDR.N    R2,??main_2+0x8  ;; 0x9999999a
+   \   0000001A   0x4B1E             LDR.N    R3,??main_2+0xC  ;; 0xbfb99999
+   \   0000001C   0x.... 0x....      BL       __aeabi_dadd
+   \   00000020   0x.... 0x....      BL       __aeabi_d2f
+   \   00000024   0x4919             LDR.N    R1,??main_2+0x4
+   \   00000026   0x6008             STR      R0,[R1, #+0]
+     27                }
+     28              LCD_Write_Float_Dot(85,0,steering_err,2);
+   \                     ??main_3: (+1)
+   \   00000028   0x2302             MOVS     R3,#+2
+   \   0000002A   0x481B             LDR.N    R0,??main_2+0x10
+   \   0000002C   0x6802             LDR      R2,[R0, #+0]
+   \   0000002E   0x2100             MOVS     R1,#+0
+   \   00000030   0x2055             MOVS     R0,#+85
+   \   00000032   0x.... 0x....      BL       LCD_Write_Float_Dot
+     29              LCD_Write_Float(85,2,steering_p);
+   \   00000036   0x4815             LDR.N    R0,??main_2+0x4
+   \   00000038   0x6802             LDR      R2,[R0, #+0]
+   \   0000003A   0x2102             MOVS     R1,#+2
+   \   0000003C   0x2055             MOVS     R0,#+85
+   \   0000003E   0x.... 0x....      BL       LCD_Write_Float
+     30              LCD_Write_Float(85,3,sterring_out);
+   \   00000042   0x4816             LDR.N    R0,??main_2+0x14
+   \   00000044   0x6802             LDR      R2,[R0, #+0]
+   \   00000046   0x2103             MOVS     R1,#+3
+   \   00000048   0x2055             MOVS     R0,#+85
+   \   0000004A   0x.... 0x....      BL       LCD_Write_Float
+   \                     ??main_0: (+1)
+   \   0000004E   0x.... 0x....      BL       get_img
+   \   00000052   0x2250             MOVS     R2,#+80
+   \   00000054   0x213C             MOVS     R1,#+60
+   \   00000056   0x4812             LDR.N    R0,??main_2+0x18
+   \   00000058   0x.... 0x....      BL       LED_PrintImage
+   \   0000005C   0x.... 0x....      BL       key_scan
+   \   00000060   0x4909             LDR.N    R1,??main_2
+   \   00000062   0x7008             STRB     R0,[R1, #+0]
+   \   00000064   0x4808             LDR.N    R0,??main_2
+   \   00000066   0x7800             LDRB     R0,[R0, #+0]
+   \   00000068   0x2801             CMP      R0,#+1
+   \   0000006A   0xD1CD             BNE.N    ??main_1
+   \   0000006C   0x4807             LDR.N    R0,??main_2+0x4
+   \   0000006E   0x6800             LDR      R0,[R0, #+0]
+   \   00000070   0x.... 0x....      BL       __aeabi_f2d
+   \   00000074   0x4A06             LDR.N    R2,??main_2+0x8  ;; 0x9999999a
+   \   00000076   0x4B0B             LDR.N    R3,??main_2+0x1C  ;; 0x3fb99999
+   \   00000078   0x.... 0x....      BL       __aeabi_dadd
+   \   0000007C   0x.... 0x....      BL       __aeabi_d2f
+   \   00000080   0x4902             LDR.N    R1,??main_2+0x4
+   \   00000082   0x6008             STR      R0,[R1, #+0]
+   \   00000084   0xE7D0             B.N      ??main_3
+   \   00000086   0xBF00             Nop      
+   \                     ??main_2:
+   \   00000088   0x........         DC32     key
+   \   0000008C   0x........         DC32     steering_p
+   \   00000090   0x9999999A         DC32     0x9999999a
+   \   00000094   0xBFB99999         DC32     0xbfb99999
+   \   00000098   0x........         DC32     steering_err
+   \   0000009C   0x........         DC32     sterring_out
+   \   000000A0   0x........         DC32     Img
+   \   000000A4   0x3FB99999         DC32     0x3fb99999
+     31            } 
+     32          }
+     33          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   main
+         8   -> LCD_Write_Float
+         8   -> LCD_Write_Float_Dot
+         8   -> LED_PrintImage
+         8   -> __aeabi_d2f
+         8   -> __aeabi_dadd
+         8   -> __aeabi_f2d
+         8   -> get_img
+         8   -> init_all
+         8   -> key_scan
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       1  key
+     168  main
+
+ 
+   1 byte  in section .bss
+ 168 bytes in section .text
+ 
+ 168 bytes of CODE memory
+   1 byte  of DATA memory
+
+Errors: none
+Warnings: none

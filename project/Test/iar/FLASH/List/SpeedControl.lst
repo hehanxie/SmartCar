@@ -1,0 +1,487 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.30.3.8024/W32 for ARM        17/Jul/2016  20:40:45
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\lib\common\SpeedControl.c
+#    Command line =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\lib\common\SpeedControl.c -D
+#        LPLD_K60 -D USE_K60D10 -lCN
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\ -lB
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\ -o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\Obj\
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config
+#        D:\IAR\arm\INC\c\DLib_Config_Normal.h -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\app\ -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\class\
+#        -I C:\Users\whstarlit\Desktop\Smart_Car\lib\ -Ol -I
+#        D:\IAR\arm\CMSIS\Include\ -D ARM_MATH_CM4
+#    List file    =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\SpeedControl.lst
+#    Object file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\Obj\SpeedControl.o
+#
+###############################################################################
+
+C:\Users\whstarlit\Desktop\Smart_Car\lib\common\SpeedControl.c
+      1          #include "SpeedControl.h"
+      2          #include "include.h"
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          void pit_speed_control()
+      5          {
+   \                     pit_speed_control: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+      6            //获取当前编码器的值
+      7            //speedCount = LPLD_FTM_GetCounter(FTM1);
+      8            //清零
+      9            //sss = speedCount;
+     10            //speed_control();
+     11            //LPLD_FTM_ClearCounter(FTM1);
+     12            
+     13            speed_protected();
+   \   00000002   0x.... 0x....      BL       speed_protected
+     14          }
+   \   00000006   0xBD01             POP      {R0,PC}          ;; return
+     15          
+
+   \                                 In section .text, align 2, keep-with-next
+     16          void speed_protected()
+     17          {
+   \                     speed_protected: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     18            if (1 == start)
+   \   00000002   0x....             LDR.N    R0,??DataTable1
+   \   00000004   0x7800             LDRB     R0,[R0, #+0]
+   \   00000006   0x2801             CMP      R0,#+1
+   \   00000008   0xD10B             BNE.N    ??speed_protected_0
+     19            {
+     20              //LPLD_FTM_PWM_ChangeDuty(FTM0, FTM_Ch0, Speed_Car_New);
+     21              LPLD_FTM_PWM_ChangeDuty(FTM0, FTM_Ch0, SPEED);
+   \   0000000A   0x....             LDR.N    R0,??DataTable1_1
+   \   0000000C   0x6802             LDR      R2,[R0, #+0]
+   \   0000000E   0x2100             MOVS     R1,#+0
+   \   00000010   0x....             LDR.N    R0,??DataTable1_2  ;; 0x40038000
+   \   00000012   0x.... 0x....      BL       LPLD_FTM_PWM_ChangeDuty
+     22              LPLD_FTM_PWM_ChangeDuty(FTM0, FTM_Ch1, 0);
+   \   00000016   0x2200             MOVS     R2,#+0
+   \   00000018   0x2101             MOVS     R1,#+1
+   \   0000001A   0x....             LDR.N    R0,??DataTable1_2  ;; 0x40038000
+   \   0000001C   0x.... 0x....      BL       LPLD_FTM_PWM_ChangeDuty
+   \   00000020   0xE009             B.N      ??speed_protected_1
+     23            }
+     24            else
+     25            {
+     26              LPLD_FTM_PWM_ChangeDuty(FTM0, FTM_Ch0, 0);
+   \                     ??speed_protected_0: (+1)
+   \   00000022   0x2200             MOVS     R2,#+0
+   \   00000024   0x2100             MOVS     R1,#+0
+   \   00000026   0x....             LDR.N    R0,??DataTable1_2  ;; 0x40038000
+   \   00000028   0x.... 0x....      BL       LPLD_FTM_PWM_ChangeDuty
+     27              LPLD_FTM_PWM_ChangeDuty(FTM0, FTM_Ch1, 0);
+   \   0000002C   0x2200             MOVS     R2,#+0
+   \   0000002E   0x2101             MOVS     R1,#+1
+   \   00000030   0x....             LDR.N    R0,??DataTable1_2  ;; 0x40038000
+   \   00000032   0x.... 0x....      BL       LPLD_FTM_PWM_ChangeDuty
+     28            }
+     29          }
+   \                     ??speed_protected_1: (+1)
+   \   00000036   0xBD01             POP      {R0,PC}          ;; return
+     30          
+
+   \                                 In section .text, align 2, keep-with-next
+     31          void speed_control()
+     32          {
+   \                     speed_control: (+1)
+   \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+     33            //增量式速度PID
+     34            volatile static float err = 0 ,last_err = 0 ,before_last_err = 0 ,derr = 0;
+     35            float speed_P = 0.0, speed_I = 0.0, speed_D = 0.0;
+   \   00000004   0x2600             MOVS     R6,#+0
+   \   00000006   0x2700             MOVS     R7,#+0
+   \   00000008   0x2400             MOVS     R4,#+0
+     36            static float P_Last,I_Last;
+     37          //  float Power = 0.5;                                  //速度P控制输出量的权值
+     38          //  if(start == 1)                                    //当开始运行时，速度一点点的加上去
+     39          //  {
+     40          //     if(CAR_SPEED_SET < CAR_SPEED_SET_TMP)
+     41          //       CAR_SPEED_SET += 100; 
+     42          //  }
+     43          //
+     44          //  if(speed_left > speed_right)                     
+     45          //    speed_car = (int)(speed_left *0.60 + speed_right * 0.4);
+     46          //  else 
+     47          //    speed_car = (int)(speed_left *0.4 + speed_right * 0.6);
+     48          // 
+     49            Speed_Car = speedCount;//车子的实际速度，为左右两轮速度的均值
+   \   0000000A   0x....             LDR.N    R0,??DataTable1_3
+   \   0000000C   0x6800             LDR      R0,[R0, #+0]
+   \   0000000E   0x.... 0x....      BL       __aeabi_i2f
+   \   00000012   0x....             LDR.N    R1,??DataTable1_4
+   \   00000014   0x6008             STR      R0,[R1, #+0]
+     50            
+     51            err = CAR_SPEED_SET - Speed_Car ;                //与预定速度的差值
+   \   00000016   0x....             LDR.N    R0,??DataTable1_5
+   \   00000018   0x6800             LDR      R0,[R0, #+0]
+   \   0000001A   0x....             LDR.N    R1,??DataTable1_4
+   \   0000001C   0x6809             LDR      R1,[R1, #+0]
+   \   0000001E   0x.... 0x....      BL       __aeabi_fsub
+   \   00000022   0x....             LDR.N    R1,??DataTable1_6
+   \   00000024   0x6008             STR      R0,[R1, #+0]
+     52            derr = err - last_err;                           //两次速度的偏差
+   \   00000026   0x....             LDR.N    R0,??DataTable1_6
+   \   00000028   0x6800             LDR      R0,[R0, #+0]
+   \   0000002A   0x....             LDR.N    R1,??DataTable1_7
+   \   0000002C   0x6809             LDR      R1,[R1, #+0]
+   \   0000002E   0x.... 0x....      BL       __aeabi_fsub
+   \   00000032   0x....             LDR.N    R1,??DataTable1_8
+   \   00000034   0x6008             STR      R0,[R1, #+0]
+     53            //derr1=0.9*derr1+0.1*derr;
+     54            Speed_Car_Old = Speed_Car_New;                     //新旧速度输出量的交替
+   \   00000036   0x....             LDR.N    R0,??DataTable1_9
+   \   00000038   0x6800             LDR      R0,[R0, #+0]
+   \   0000003A   0x....             LDR.N    R1,??DataTable1_10
+   \   0000003C   0x6008             STR      R0,[R1, #+0]
+     55          
+     56             
+     57            speed_P = (float)derr * P_Speed;
+   \   0000003E   0x....             LDR.N    R0,??DataTable1_8
+   \   00000040   0x6801             LDR      R1,[R0, #+0]
+   \   00000042   0x....             LDR.N    R0,??DataTable1_11
+   \   00000044   0x6800             LDR      R0,[R0, #+0]
+   \   00000046   0x.... 0x....      BL       __aeabi_fmul
+   \   0000004A   0x0006             MOVS     R6,R0
+     58            speed_I = (float)err * I_Speed;
+   \   0000004C   0x....             LDR.N    R0,??DataTable1_6
+   \   0000004E   0x6801             LDR      R1,[R0, #+0]
+   \   00000050   0x....             LDR.N    R0,??DataTable1_12
+   \   00000052   0x6800             LDR      R0,[R0, #+0]
+   \   00000054   0x.... 0x....      BL       __aeabi_fmul
+   \   00000058   0x0007             MOVS     R7,R0
+     59            speed_D = (float)(err  - 2.0*last_err + before_last_err) * D_Speed;
+   \   0000005A   0x....             LDR.N    R0,??DataTable1_6
+   \   0000005C   0x6800             LDR      R0,[R0, #+0]
+   \   0000005E   0x....             LDR.N    R1,??DataTable1_7
+   \   00000060   0xF8D1 0x8000      LDR      R8,[R1, #+0]
+   \   00000064   0x.... 0x....      BL       __aeabi_f2d
+   \   00000068   0x0004             MOVS     R4,R0
+   \   0000006A   0x000D             MOVS     R5,R1
+   \   0000006C   0x4640             MOV      R0,R8
+   \   0000006E   0x.... 0x....      BL       __aeabi_f2d
+   \   00000072   0x2200             MOVS     R2,#+0
+   \   00000074   0xF05F 0x4380      MOVS     R3,#+1073741824
+   \   00000078   0x.... 0x....      BL       __aeabi_dmul
+   \   0000007C   0x0002             MOVS     R2,R0
+   \   0000007E   0x000B             MOVS     R3,R1
+   \   00000080   0x0020             MOVS     R0,R4
+   \   00000082   0x0029             MOVS     R1,R5
+   \   00000084   0x.... 0x....      BL       __aeabi_dsub
+   \   00000088   0x0004             MOVS     R4,R0
+   \   0000008A   0x000D             MOVS     R5,R1
+   \   0000008C   0x....             LDR.N    R0,??DataTable1_13
+   \   0000008E   0x6800             LDR      R0,[R0, #+0]
+   \   00000090   0x.... 0x....      BL       __aeabi_f2d
+   \   00000094   0x0022             MOVS     R2,R4
+   \   00000096   0x002B             MOVS     R3,R5
+   \   00000098   0x.... 0x....      BL       __aeabi_dadd
+   \   0000009C   0x.... 0x....      BL       __aeabi_d2f
+   \   000000A0   0x....             LDR.N    R1,??DataTable1_14
+   \   000000A2   0x6809             LDR      R1,[R1, #+0]
+   \   000000A4   0x.... 0x....      BL       __aeabi_fmul
+   \   000000A8   0x0004             MOVS     R4,R0
+     60          // P = P * Power + P_Last * (1.0 - Power);              //对速度P的控制量做低通滤波
+     61          // I = I * Power + I_Last * (1.0 - Power);  
+     62          //  if(P > 8000)
+     63          //   P = 8000;
+     64          //  else if(P < -8000)
+     65          //    P = -8000;
+     66          //  if(I > 800)
+     67          //   I = 800;
+     68          //  else if(I < -800)
+     69          //  I = -800;
+     70          
+     71            P_speed_out = speed_P;
+   \   000000AA   0x....             LDR.N    R0,??DataTable1_15
+   \   000000AC   0x6006             STR      R6,[R0, #+0]
+     72            I_speed_out = speed_I;
+   \   000000AE   0x....             LDR.N    R0,??DataTable1_16
+   \   000000B0   0x6007             STR      R7,[R0, #+0]
+     73          
+     74            Speed_Car_New += speed_P + speed_I + speed_D;       //速度的输出值
+   \   000000B2   0x0030             MOVS     R0,R6
+   \   000000B4   0x0039             MOVS     R1,R7
+   \   000000B6   0x.... 0x....      BL       __aeabi_fadd
+   \   000000BA   0x0021             MOVS     R1,R4
+   \   000000BC   0x.... 0x....      BL       __aeabi_fadd
+   \   000000C0   0x....             LDR.N    R1,??DataTable1_9
+   \   000000C2   0x6809             LDR      R1,[R1, #+0]
+   \   000000C4   0x.... 0x....      BL       __aeabi_fadd
+   \   000000C8   0x....             LDR.N    R1,??DataTable1_9
+   \   000000CA   0x6008             STR      R0,[R1, #+0]
+     75           
+     76            
+     77            if(Speed_Car_New > Speed_Control_Max)
+   \   000000CC   0x....             LDR.N    R0,??DataTable1_17
+   \   000000CE   0x6800             LDR      R0,[R0, #+0]
+   \   000000D0   0x....             LDR.N    R1,??DataTable1_9
+   \   000000D2   0x6809             LDR      R1,[R1, #+0]
+   \   000000D4   0x.... 0x....      BL       __aeabi_cfcmple
+   \   000000D8   0xD203             BCS.N    ??speed_control_0
+     78            {
+     79              Speed_Car_New = Speed_Control_Max;
+   \   000000DA   0x....             LDR.N    R0,??DataTable1_17
+   \   000000DC   0x6800             LDR      R0,[R0, #+0]
+   \   000000DE   0x....             LDR.N    R1,??DataTable1_9
+   \   000000E0   0x6008             STR      R0,[R1, #+0]
+     80            }
+     81            if(Speed_Car_New < Speed_Control_Min)
+   \                     ??speed_control_0: (+1)
+   \   000000E2   0x....             LDR.N    R0,??DataTable1_9
+   \   000000E4   0x6800             LDR      R0,[R0, #+0]
+   \   000000E6   0x....             LDR.N    R1,??DataTable1_18
+   \   000000E8   0x6809             LDR      R1,[R1, #+0]
+   \   000000EA   0x.... 0x....      BL       __aeabi_cfcmple
+   \   000000EE   0xD203             BCS.N    ??speed_control_1
+     82            {
+     83              Speed_Car_New = Speed_Control_Min;
+   \   000000F0   0x....             LDR.N    R0,??DataTable1_18
+   \   000000F2   0x6800             LDR      R0,[R0, #+0]
+   \   000000F4   0x....             LDR.N    R1,??DataTable1_9
+   \   000000F6   0x6008             STR      R0,[R1, #+0]
+     84            } 
+     85            before_last_err = last_err; 
+   \                     ??speed_control_1: (+1)
+   \   000000F8   0x....             LDR.N    R0,??DataTable1_7
+   \   000000FA   0x6800             LDR      R0,[R0, #+0]
+   \   000000FC   0x....             LDR.N    R1,??DataTable1_13
+   \   000000FE   0x6008             STR      R0,[R1, #+0]
+     86            last_err = err;
+   \   00000100   0x....             LDR.N    R0,??DataTable1_6
+   \   00000102   0x6800             LDR      R0,[R0, #+0]
+   \   00000104   0x....             LDR.N    R1,??DataTable1_7
+   \   00000106   0x6008             STR      R0,[R1, #+0]
+     87            P_Last = speed_P;
+   \   00000108   0x....             LDR.N    R0,??DataTable1_19
+   \   0000010A   0x6006             STR      R6,[R0, #+0]
+     88            I_Last = speed_I;
+   \   0000010C   0x....             LDR.N    R0,??DataTable1_20
+   \   0000010E   0x6007             STR      R7,[R0, #+0]
+     89          }
+   \   00000110   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+
+   \                                 In section .bss, align 4
+   \                     ??err:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     ??last_err:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     ??before_last_err:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     ??derr:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     ??P_Last:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     ??I_Last:
+   \   00000000                      DS8 4
+     90          
+     91          //终点停车
+
+   \                                 In section .text, align 2, keep-with-next
+     92          void speed_stop()
+     93          {
+     94          }
+   \                     speed_stop: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x........         DC32     start
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x........         DC32     SPEED
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   0x40038000         DC32     0x40038000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \   00000000   0x........         DC32     speedCount
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \   00000000   0x........         DC32     Speed_Car
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \   00000000   0x........         DC32     CAR_SPEED_SET
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_6:
+   \   00000000   0x........         DC32     ??err
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_7:
+   \   00000000   0x........         DC32     ??last_err
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_8:
+   \   00000000   0x........         DC32     ??derr
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_9:
+   \   00000000   0x........         DC32     Speed_Car_New
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_10:
+   \   00000000   0x........         DC32     Speed_Car_Old
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_11:
+   \   00000000   0x........         DC32     P_Speed
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_12:
+   \   00000000   0x........         DC32     I_Speed
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_13:
+   \   00000000   0x........         DC32     ??before_last_err
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_14:
+   \   00000000   0x........         DC32     D_Speed
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_15:
+   \   00000000   0x........         DC32     P_speed_out
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_16:
+   \   00000000   0x........         DC32     I_speed_out
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_17:
+   \   00000000   0x........         DC32     Speed_Control_Max
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_18:
+   \   00000000   0x........         DC32     Speed_Control_Min
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_19:
+   \   00000000   0x........         DC32     ??P_Last
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_20:
+   \   00000000   0x........         DC32     ??I_Last
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   pit_speed_control
+         8   -> speed_protected
+      24   speed_control
+        24   -> __aeabi_d2f
+        24   -> __aeabi_dadd
+        24   -> __aeabi_dmul
+        24   -> __aeabi_dsub
+        24   -> __aeabi_f2d
+        24   -> __aeabi_fadd
+        24   -> __aeabi_fmul
+        24   -> __aeabi_fsub
+        24   -> __aeabi_i2f
+        24 __aeabi_cfcmple
+       8   speed_protected
+         8   -> LPLD_FTM_PWM_ChangeDuty
+       0   speed_stop
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_10
+       4  ??DataTable1_11
+       4  ??DataTable1_12
+       4  ??DataTable1_13
+       4  ??DataTable1_14
+       4  ??DataTable1_15
+       4  ??DataTable1_16
+       4  ??DataTable1_17
+       4  ??DataTable1_18
+       4  ??DataTable1_19
+       4  ??DataTable1_2
+       4  ??DataTable1_20
+       4  ??DataTable1_3
+       4  ??DataTable1_4
+       4  ??DataTable1_5
+       4  ??DataTable1_6
+       4  ??DataTable1_7
+       4  ??DataTable1_8
+       4  ??DataTable1_9
+       4  I_Last
+       4  P_Last
+       4  before_last_err
+       4  derr
+       4  err
+       4  last_err
+       8  pit_speed_control
+     276  speed_control
+      56  speed_protected
+       2  speed_stop
+
+ 
+  24 bytes in section .bss
+ 426 bytes in section .text
+ 
+ 426 bytes of CODE memory
+  24 bytes of DATA memory
+
+Errors: none
+Warnings: 4

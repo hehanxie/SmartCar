@@ -1,0 +1,1 @@
+extern void motor_init();

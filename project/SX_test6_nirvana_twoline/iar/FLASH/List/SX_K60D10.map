@@ -1,0 +1,616 @@
+###############################################################################
+#
+# IAR ELF Linker V7.30.3.8024/W32 for ARM                 12/Jul/2016  22:03:04
+# Copyright 2007-2014 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Exe\SX_K60D10.out
+#    Map file     =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\SX_K60D10.map
+#    Command line =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\alloc.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\assert.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\DEV_SCCB.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\Global_var.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\HW_ADC.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\HW_DMA.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\HW_FTM.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\HW_GPIO.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\HW_MCG.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\HW_PIT.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\HW_UART.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\init.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\io.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\keyboard.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\LQ12864.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\Motor_Control.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\OV7725.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\printf.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\queue.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\relocate.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\startup_K60D10.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\stdlib.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\Steering_Control.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\SX.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\system_MK60.o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj\uif.o
+#        --redirect _Printf=_PrintfFull --redirect _Scanf=_ScanfFull -o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Exe\SX_K60D10.out
+#        --map
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\List\SX_K60D10.map
+#        --config
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\..\..\..\lib\iar_config_files\LPLD_K60DN512_FLASH.icf
+#        --semihosting --entry __iar_program_start
+#        D:\IAR\arm\CMSIS\Lib\IAR\iar_cortexM4l_math.a
+#        --merge_duplicate_sections --vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A1":  place at 0x00000000 { ro section .intvec };
+"A2":  place at 0x00000410 { ro section .noinit };
+"P1":  place in [from 0x00000000 to 0x00080000] { ro, block CodeRelocate };
+"P2":  place in [from 0x1fff0410 to 0x20010000] {
+          rw, block CodeRelocateRam, block CSTACK, block HEAP };
+
+  Section              Kind        Address    Size  Object
+  -------              ----        -------    ----  ------
+"A1":                                        0x400
+  .intvec              ro code  0x00000000   0x400  startup_K60D10.o [1]
+                              - 0x00000400   0x400
+
+"P1", part 1 of 2:                             0x0
+  .rodata              const    0x00000400     0x0  zero_init3.o [5]
+
+"A2":                                         0x14
+  .noinit              ro code  0x00000410    0x10  startup_K60D10.o [1]
+  .noinit              ro code  0x00000420     0x4  startup_K60D10.o [1]
+                              - 0x00000424    0x14
+
+"P1", part 2 of 2:                          0x4ea8
+  .text                ro code  0x00000424   0x934  HW_FTM.o [1]
+  .text                ro code  0x00000d58    0x14  assert.o [1]
+  .text                ro code  0x00000d6c    0x56  ABImemcpy_unaligned.o [5]
+  .text                ro code  0x00000dc2    0x22  zero_init3.o [5]
+  .text                ro code  0x00000de4   0x4e4  printf.o [1]
+  .text                ro code  0x000012c8    0x1c  stdlib.o [1]
+  .text                ro code  0x000012e4   0x758  system_MK60.o [1]
+  .text                ro code  0x00001a3c    0xa0  relocate.o [1]
+  Veneer               ro code  0x00001adc     0x8  - Linker created -
+  .text                ro code  0x00001ae4   0x170  HW_MCG.o [1]
+  .text                ro code  0x00001c54   0x714  HW_UART.o [1]
+  .text                ro code  0x00002368   0x63a  Steering_Control.o [1]
+  .rodata              const    0x000029a2     0x2  OV7725.o [1]
+  .text                ro code  0x000029a4    0x32  I32ToFlt.o [4]
+  .text                ro code  0x000029d8    0x84  FltAdd.o [4]
+  .text                ro code  0x00002a5c    0xd8  FltMul.o [4]
+  .text                ro code  0x00002b34    0xe6  FltSub.o [4]
+  .text                ro code  0x00002c1c    0x24  FltCmpGe.o [4]
+  .text                ro code  0x00002c40   0x5e0  LQ12864.o [1]
+  .text                ro code  0x00003220    0x44  FltToS32.o [4]
+  .text                ro code  0x00003264   0x188  HW_GPIO.o [1]
+  .text                ro code  0x000033ec    0x24  FltCmpLe.o [4]
+  .text                ro code  0x00003410    0x24  FltToU32.o [4]
+  .text                ro code  0x00003434   0x4f8  OV7725.o [1]
+  .text                ro code  0x0000392c   0x4b4  HW_DMA.o [1]
+  .text                ro code  0x00003de0   0x370  DEV_SCCB.o [1]
+  .rodata              const    0x00004150   0x228  LQ12864.o [1]
+  .text                ro code  0x00004378   0x1e2  keyboard.o [1]
+  .text                ro code  0x0000455c   0x16c  DblSub.o [4]
+  .text                ro code  0x000046c8   0x12c  SX.o [1]
+  .text                ro code  0x000047f4    0x3c  init.o [1]
+  .text                ro code  0x00004830    0x4e  FltToDbl.o [4]
+  .text                ro code  0x00004880    0xe8  DblAdd.o [4]
+  .text                ro code  0x00004968    0x90  DblToFlt.o [4]
+  .text                ro code  0x000049f8    0x54  Motor_Control.o [1]
+  .text                ro code  0x00004a4c    0x6c  HW_PIT.o [1]
+  CodeRelocate                  0x00004ab8    0x4c  <Block>
+    Initializer bytes  ro data  0x00004ab8    0x4c  <for CodeRelocateRam-1>
+  .rodata              const    0x00004b04    0x48  system_MK60.o [1]
+  .rodata              const    0x00004b4c    0x44  system_MK60.o [1]
+  .rodata              const    0x00004b90    0x44  system_MK60.o [1]
+  .rodata              const    0x00004bd4    0x3c  HW_DMA.o [1]
+  .rodata              const    0x00004c10    0x3c  HW_FTM.o [1]
+  .rodata              const    0x00004c4c    0x3c  HW_GPIO.o [1]
+  .rodata              const    0x00004c88    0x34  system_MK60.o [1]
+  .rodata              const    0x00004cbc    0x30  assert.o [1]
+  .rodata              const    0x00004cec    0x30  system_MK60.o [1]
+  .rodata              const    0x00004d1c    0x30  system_MK60.o [1]
+  .data_init                    0x00004d4c    0x30  <Block>
+    Initializer bytes  ro data  0x00004d4c    0x30  <for .data-1>
+  .rodata              const    0x00004d7c    0x28  system_MK60.o [1]
+  .text                ro code  0x00004da4    0x28  data_init.o [5]
+  .rodata              const    0x00004dcc    0x24  system_MK60.o [1]
+  .rodata              const    0x00004df0    0x24  system_MK60.o [1]
+  .rodata              const    0x00004e14    0x24  system_MK60.o [1]
+  .iar.init_table      const    0x00004e38    0x10  - Linker created -
+  .rodata              const    0x00004e48    0x20  system_MK60.o [1]
+  .rodata              const    0x00004e68    0x20  system_MK60.o [1]
+  .rodata              const    0x00004e88    0x20  system_MK60.o [1]
+  .rodata              const    0x00004ea8    0x20  system_MK60.o [1]
+  .rodata              const    0x00004ec8    0x20  system_MK60.o [1]
+  .rodata              const    0x00004ee8    0x20  system_MK60.o [1]
+  .rodata              const    0x00004f08    0x1c  system_MK60.o [1]
+  .rodata              const    0x00004f24    0x1c  system_MK60.o [1]
+  .rodata              const    0x00004f40    0x1c  system_MK60.o [1]
+  .rodata              const    0x00004f5c    0x1c  system_MK60.o [1]
+  .rodata              const    0x00004f78    0x1c  system_MK60.o [1]
+  .text                ro code  0x00004f94    0x1c  HW_ADC.o [1]
+  .text                ro code  0x00004fb0    0x1a  cmain.o [5]
+  .text                ro code  0x00004fca     0x4  low_level_init.o [3]
+  .text                ro code  0x00004fce     0x4  exit.o [3]
+  .text                ro code  0x00004fd4     0xa  cexit.o [5]
+  .text                ro code  0x00004fe0    0x14  exit.o [6]
+  .rodata              const    0x00004ff4    0x18  system_MK60.o [1]
+  .rodata              const    0x0000500c    0x18  system_MK60.o [1]
+  .rodata              const    0x00005024    0x18  system_MK60.o [1]
+  .rodata              const    0x0000503c    0x18  system_MK60.o [1]
+  .rodata              const    0x00005054    0x18  system_MK60.o [1]
+  .rodata              const    0x0000506c    0x18  system_MK60.o [1]
+  .rodata              const    0x00005084    0x18  system_MK60.o [1]
+  .rodata              const    0x0000509c    0x18  system_MK60.o [1]
+  .rodata              const    0x000050b4    0x18  system_MK60.o [1]
+  .rodata              const    0x000050cc    0x18  system_MK60.o [1]
+  .rodata              const    0x000050e4    0x18  system_MK60.o [1]
+  .rodata              const    0x000050fc    0x18  system_MK60.o [1]
+  .rodata              const    0x00005114    0x18  system_MK60.o [1]
+  .rodata              const    0x0000512c    0x14  system_MK60.o [1]
+  .rodata              const    0x00005140    0x14  system_MK60.o [1]
+  .rodata              const    0x00005154    0x14  system_MK60.o [1]
+  .rodata              const    0x00005168    0x14  system_MK60.o [1]
+  .rodata              const    0x0000517c    0x14  system_MK60.o [1]
+  .rodata              const    0x00005190    0x14  system_MK60.o [1]
+  .rodata              const    0x000051a4    0x14  system_MK60.o [1]
+  .text                ro code  0x000051b8    0x14  io.o [1]
+  .rodata              const    0x000051cc    0x10  system_MK60.o [1]
+  .rodata              const    0x000051dc    0x10  system_MK60.o [1]
+  .rodata              const    0x000051ec    0x10  system_MK60.o [1]
+  .rodata              const    0x000051fc    0x10  system_MK60.o [1]
+  .rodata              const    0x0000520c    0x10  system_MK60.o [1]
+  .rodata              const    0x0000521c     0xc  system_MK60.o [1]
+  .text                ro code  0x00005228     0xc  cstartup_M.o [5]
+  .rodata              const    0x00005234     0x8  system_MK60.o [1]
+  .rodata              const    0x0000523c     0x8  system_MK60.o [1]
+  .rodata              const    0x00005244     0x8  system_MK60.o [1]
+  .rodata              const    0x0000524c     0x8  system_MK60.o [1]
+  .rodata              const    0x00005254     0x8  system_MK60.o [1]
+  .rodata              const    0x0000525c     0x8  system_MK60.o [1]
+  .rodata              const    0x00005264     0x8  system_MK60.o [1]
+  .rodata              const    0x0000526c     0x8  system_MK60.o [1]
+  .rodata              const    0x00005274     0x8  system_MK60.o [1]
+  .rodata              const    0x0000527c     0x8  system_MK60.o [1]
+  .rodata              const    0x00005284     0x8  system_MK60.o [1]
+  .rodata              const    0x0000528c     0x8  system_MK60.o [1]
+  .rodata              const    0x00005294     0x8  system_MK60.o [1]
+  .rodata              const    0x0000529c     0x8  system_MK60.o [1]
+  .rodata              const    0x000052a4     0x8  system_MK60.o [1]
+  .rodata              const    0x000052ac     0x8  system_MK60.o [1]
+  .rodata              const    0x000052b4     0x8  system_MK60.o [1]
+  .rodata              const    0x000052bc     0x8  system_MK60.o [1]
+  .rodata              const    0x000052c4     0x8  system_MK60.o [1]
+                              - 0x000052cc  0x4ea8
+
+"P2":                                       0x2c38
+  CodeRelocateRam               0x1fff0410    0x4c  <Block>
+    CodeRelocateRam-1           0x1fff0410    0x4c  <Init block>
+      .textrw          inited   0x1fff0410    0x4c  HW_MCG.o [1]
+  .data                         0x1fff045c    0x30  <Block>
+    .data-1                     0x1fff045c    0x30  <Init block>
+      .data            inited   0x1fff045c     0x4  Global_var.o [1]
+      .data            inited   0x1fff0460     0x4  Global_var.o [1]
+      .data            inited   0x1fff0464     0x4  Global_var.o [1]
+      .data            inited   0x1fff0468     0x4  Global_var.o [1]
+      .data            inited   0x1fff046c     0x4  Global_var.o [1]
+      .data            inited   0x1fff0470     0x4  Global_var.o [1]
+      .data            inited   0x1fff0474     0x4  HW_MCG.o [1]
+      .data            inited   0x1fff0478     0x4  HW_MCG.o [1]
+      .data            inited   0x1fff047c     0x4  HW_MCG.o [1]
+      .data            inited   0x1fff0480     0x4  HW_MCG.o [1]
+      .data            inited   0x1fff0484     0x1  OV7725.o [1]
+      .data            inited   0x1fff0488     0x4  system_MK60.o [1]
+  .bss                          0x1fff048c  0x1bbc  <Block>
+    .bss               zero     0x1fff048c   0x258  Global_var.o [1]
+    .bss               zero     0x1fff06e4   0x258  Global_var.o [1]
+    .bss               zero     0x1fff093c  0x12c0  Global_var.o [1]
+    .bss               zero     0x1fff1bfc     0x4  Global_var.o [1]
+    .bss               zero     0x1fff1c00    0xf0  Global_var.o [1]
+    .bss               zero     0x1fff1cf0    0xf0  Global_var.o [1]
+    .bss               zero     0x1fff1de0    0xf0  Global_var.o [1]
+    .bss               zero     0x1fff1ed0     0x8  HW_ADC.o [1]
+    .bss               zero     0x1fff1ed8    0x40  HW_DMA.o [1]
+    .bss               zero     0x1fff1f18     0xc  HW_FTM.o [1]
+    .bss               zero     0x1fff1f24    0x14  HW_GPIO.o [1]
+    .bss               zero     0x1fff1f38    0x10  HW_PIT.o [1]
+    .bss               zero     0x1fff1f48    0x18  HW_UART.o [1]
+    .bss               zero     0x1fff1f60    0x18  HW_UART.o [1]
+    .bss               zero     0x1fff1f78    0x14  LQ12864.o [1]
+    .bss               zero     0x1fff1f8c    0x1c  Motor_Control.o [1]
+    .bss               zero     0x1fff1fa8    0x14  OV7725.o [1]
+    .bss               zero     0x1fff1fbc    0x14  OV7725.o [1]
+    .bss               zero     0x1fff1fd0    0x14  OV7725.o [1]
+    .bss               zero     0x1fff1fe4    0x2c  OV7725.o [1]
+    .bss               zero     0x1fff2010     0x4  Steering_Control.o [1]
+    .bss               zero     0x1fff2014     0x4  Steering_Control.o [1]
+    .bss               zero     0x1fff2018     0x4  Steering_Control.o [1]
+    .bss               zero     0x1fff201c     0x4  Steering_Control.o [1]
+    .bss               zero     0x1fff2020     0x4  Steering_Control.o [1]
+    .bss               zero     0x1fff2024    0x1c  Steering_Control.o [1]
+    .bss               zero     0x1fff2040     0x1  Global_var.o [1]
+    .bss               zero     0x1fff2041     0x1  Global_var.o [1]
+    .bss               zero     0x1fff2042     0x1  Global_var.o [1]
+    .bss               zero     0x1fff2043     0x1  Steering_Control.o [1]
+    .bss               zero     0x1fff2044     0x1  Steering_Control.o [1]
+    .bss               zero     0x1fff2045     0x1  Steering_Control.o [1]
+    .bss               zero     0x1fff2046     0x1  SX.o [1]
+  CSTACK                        0x1fff2048  0x1000  <Block>
+    CSTACK             uninit   0x1fff2048  0x1000  <Block tail>
+                              - 0x1fff3048  0x2c38
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x1bbb:
+          0x1fff048c  0x1bbb
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                 ro code  rw code  ro data  rw data
+    ------                 -------  -------  -------  -------
+C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj: [1]
+    DEV_SCCB.o                 880
+    Global_var.o                                  24    6 751
+    HW_ADC.o                    28                          8
+    HW_DMA.o                 1 204                60       64
+    HW_FTM.o                 2 356                60       12
+    HW_GPIO.o                  392                60       20
+    HW_MCG.o                   368       76       92       16
+    HW_PIT.o                   108                         16
+    HW_UART.o                1 812                         48
+    LQ12864.o                1 504               552       20
+    Motor_Control.o             84                         28
+    OV7725.o                 1 272                 3      105
+    SX.o                       300                          1
+    Steering_Control.o       1 594                         51
+    assert.o                    20                48
+    init.o                      60
+    io.o                        20
+    keyboard.o                 482
+    printf.o                 1 252
+    relocate.o                 160
+    startup_K60D10.o         1 044
+    stdlib.o                    28
+    system_MK60.o            1 880             1 539        4
+    ---------------------------------------------------------
+    Total:                  16 848       76    2 438    7 144
+
+command line: [2]
+    ---------------------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                       4
+    low_level_init.o             4
+    ---------------------------------------------------------
+    Total:                       8
+
+m7M_tl.a: [4]
+    DblAdd.o                   232
+    DblSub.o                   364
+    DblToFlt.o                 144
+    FltAdd.o                   132
+    FltCmpGe.o                  36
+    FltCmpLe.o                  36
+    FltMul.o                   216
+    FltSub.o                   230
+    FltToDbl.o                  78
+    FltToS32.o                  68
+    FltToU32.o                  36
+    I32ToFlt.o                  50
+    ---------------------------------------------------------
+    Total:                   1 622
+
+rt7M_tl.a: [5]
+    ABImemcpy_unaligned.o       86
+    cexit.o                     10
+    cmain.o                     26
+    cstartup_M.o                12
+    data_init.o                 40
+    zero_init3.o                34
+    ---------------------------------------------------------
+    Total:                     208
+
+shb_l.a: [6]
+    exit.o                      20
+    ---------------------------------------------------------
+    Total:                      20
+
+    Gaps                        12                          3
+    Linker created               8                16    4 096
+-------------------------------------------------------------
+    Grand Total:            18 726       76    2 454   11 243
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address    Size  Type      Object
+-----                      -------    ----  ----      ------
+.bss$$Base              0x1fff048c           --   Gb  - Linker created -
+.bss$$Limit             0x1fff2048           --   Gb  - Linker created -
+.data$$Base             0x1fff045c           --   Gb  - Linker created -
+.data$$Limit            0x1fff048c           --   Gb  - Linker created -
+.data_init$$Base        0x00004d4c           --   Gb  - Linker created -
+.data_init$$Limit       0x00004d7c           --   Gb  - Linker created -
+?main                   0x00004fb1          Code  Gb  cmain.o [5]
+ADC0_IRQHandler         0x00004f95     0xa  Code  Gb  HW_ADC.o [1]
+ADC1_IRQHandler         0x00004f9f     0xa  Code  Gb  HW_ADC.o [1]
+ADC_ISR                 0x1fff1ed0     0x8  Data  Gb  HW_ADC.o [1]
+ASSERT_FAILED_STR       0x00004cbc    0x30  Data  Gb  assert.o [1]
+CSTACK$$Base            0x1fff2048           --   Gb  - Linker created -
+CSTACK$$Limit           0x1fff3048           --   Gb  - Linker created -
+Center_Line             0x1fff1de0    0xf0  Data  Gb  Global_var.o [1]
+CodeRelocate$$Base      0x00004ab8           --   Gb  - Linker created -
+CodeRelocate$$Limit     0x00004b04           --   Gb  - Linker created -
+CodeRelocateRam$$Base   0x1fff0410           --   Gb  - Linker created -
+CodeRelocateRam$$Limit  0x1fff045c           --   Gb  - Linker created -
+DMA0_IRQHandler         0x00003c5b    0x16  Code  Gb  HW_DMA.o [1]
+DMA10_IRQHandler        0x00003d37    0x16  Code  Gb  HW_DMA.o [1]
+DMA11_IRQHandler        0x00003d4d    0x16  Code  Gb  HW_DMA.o [1]
+DMA12_IRQHandler        0x00003d63    0x16  Code  Gb  HW_DMA.o [1]
+DMA13_IRQHandler        0x00003d79    0x16  Code  Gb  HW_DMA.o [1]
+DMA14_IRQHandler        0x00003d8f    0x16  Code  Gb  HW_DMA.o [1]
+DMA15_IRQHandler        0x00003da5    0x16  Code  Gb  HW_DMA.o [1]
+DMA1_IRQHandler         0x00003c71    0x16  Code  Gb  HW_DMA.o [1]
+DMA2_IRQHandler         0x00003c87    0x16  Code  Gb  HW_DMA.o [1]
+DMA3_IRQHandler         0x00003c9d    0x16  Code  Gb  HW_DMA.o [1]
+DMA4_IRQHandler         0x00003cb3    0x16  Code  Gb  HW_DMA.o [1]
+DMA5_IRQHandler         0x00003cc9    0x16  Code  Gb  HW_DMA.o [1]
+DMA6_IRQHandler         0x00003cdf    0x16  Code  Gb  HW_DMA.o [1]
+DMA7_IRQHandler         0x00003cf5    0x16  Code  Gb  HW_DMA.o [1]
+DMA8_IRQHandler         0x00003d0b    0x16  Code  Gb  HW_DMA.o [1]
+DMA9_IRQHandler         0x00003d21    0x16  Code  Gb  HW_DMA.o [1]
+DMA_ISR                 0x1fff1ed8    0x40  Data  Gb  HW_DMA.o [1]
+DMA_init                0x0000362b    0x5c  Code  Gb  OV7725.o [1]
+DMA_init_struct         0x1fff1fe4    0x2c  Data  Gb  OV7725.o [1]
+DMA_isr                 0x00003539    0x20  Code  Gb  OV7725.o [1]
+D_value                 0x1fff2020     0x4  Data  Gb  Steering_Control.o [1]
+DefaultISR              0x0000145b    0x18  Code  Gb  system_MK60.o [1]
+Diagnostic_Reset_Source
+                        0x00001747   0x156  Code  Lc  system_MK60.o [1]
+F6x8                    0x00004150   0x228  Data  Gb  LQ12864.o [1]
+FTM0_IRQHandler         0x00000cc1     0xa  Code  Gb  HW_FTM.o [1]
+FTM1_IRQHandler         0x00000ccb     0xa  Code  Gb  HW_FTM.o [1]
+FTM2_IRQHandler         0x00000cd5     0xa  Code  Gb  HW_FTM.o [1]
+FTM_ISR                 0x1fff1f18     0xc  Data  Gb  HW_FTM.o [1]
+Float_To_String         0x000030db   0x116  Code  Gb  LQ12864.o [1]
+GPIO_ISR                0x1fff1f24    0x14  Data  Gb  HW_GPIO.o [1]
+HardFault_Handler       0x0000144f     0xc  Code  Gb  system_MK60.o [1]
+IO_init                 0x00003597    0x2e  Code  Gb  OV7725.o [1]
+IO_init_struct          0x1fff1fa8    0x14  Data  Gb  OV7725.o [1]
+Img                     0x1fff093c  0x12c0  Data  Gb  Global_var.o [1]
+LCD_DLY_ms              0x00002dab    0x16  Code  Gb  LQ12864.o [1]
+LCD_Fill                0x00002d6f    0x3c  Code  Gb  LQ12864.o [1]
+LCD_Init                0x00002ecd    0x94  Code  Gb  LQ12864.o [1]
+LCD_P6x8Str             0x00002f61    0x72  Code  Gb  LQ12864.o [1]
+LCD_Set_Pos             0x00002d43    0x2c  Code  Gb  LQ12864.o [1]
+LCD_WrCmd               0x00002cf9    0x4a  Code  Gb  LQ12864.o [1]
+LCD_WrDat               0x00002cad    0x4a  Code  Gb  LQ12864.o [1]
+LCD_Write_Float_Dot     0x000031f5    0x24  Code  Gb  LQ12864.o [1]
+LED_PrintImage          0x00002fed    0xee  Code  Gb  LQ12864.o [1]
+LPLD_DMA_EnableIrq      0x00003c45    0x16  Code  Gb  HW_DMA.o [1]
+LPLD_DMA_Init           0x00003943   0x302  Code  Gb  HW_DMA.o [1]
+LPLD_FTM_DEC_Init       0x00000cb9     0x8  Code  Lc  HW_FTM.o [1]
+LPLD_FTM_IC_Init        0x00000725    0x96  Code  Lc  HW_FTM.o [1]
+LPLD_FTM_Init           0x00000425   0x120  Code  Gb  HW_FTM.o [1]
+LPLD_FTM_PWM_ChangeDuty
+                        0x000005af    0x50  Code  Gb  HW_FTM.o [1]
+LPLD_FTM_PWM_Enable     0x00000545    0x6a  Code  Gb  HW_FTM.o [1]
+LPLD_FTM_PWM_Init       0x000005ff   0x126  Code  Lc  HW_FTM.o [1]
+LPLD_FTM_PinInit        0x000007bb   0x4a4  Code  Lc  HW_FTM.o [1]
+LPLD_FTM_QD_Init        0x00000c7d    0x3c  Code  Lc  HW_FTM.o [1]
+LPLD_GPIO_Init          0x00003265    0xe4  Code  Gb  HW_GPIO.o [1]
+LPLD_PLL_Setup          0x00001ae5   0x170  Code  Gb  HW_MCG.o [1]
+LPLD_Set_SYS_DIV        0x1fff0411    0x4c  Code  Gb  HW_MCG.o [1]
+LPLD_UART_Init          0x00001c55   0x40a  Code  Gb  HW_UART.o [1]
+LPLD_UART_PutChar       0x0000205f     0xa  Code  Gb  HW_UART.o [1]
+Left_Line               0x1fff1c00    0xf0  Data  Gb  Global_var.o [1]
+Left_flag               0x1fff2044     0x1  Data  Gb  Steering_Control.o [1]
+NVIC_DisableIRQ         0x0000344b    0x16  Code  Lc  OV7725.o [1]
+NVIC_EnableIRQ          0x0000392d    0x16  Code  Lc  HW_DMA.o [1]
+NVIC_EnableIRQ          0x00003435    0x16  Code  Lc  OV7725.o [1]
+PCLK_init               0x000035fb    0x30  Code  Gb  OV7725.o [1]
+PCLK_init_struct        0x1fff1fd0    0x14  Data  Gb  OV7725.o [1]
+PIT0_IRQHandler         0x00004a4d    0x16  Code  Gb  HW_PIT.o [1]
+PIT1_IRQHandler         0x00004a63    0x16  Code  Gb  HW_PIT.o [1]
+PIT2_IRQHandler         0x00004a79    0x16  Code  Gb  HW_PIT.o [1]
+PIT3_IRQHandler         0x00004a8f    0x16  Code  Gb  HW_PIT.o [1]
+PIT_ISR                 0x1fff1f38    0x10  Data  Gb  HW_PIT.o [1]
+PORTA_IRQHandler        0x00003349    0x12  Code  Gb  HW_GPIO.o [1]
+PORTB_IRQHandler        0x0000335b    0x12  Code  Gb  HW_GPIO.o [1]
+PORTC_IRQHandler        0x0000336d    0x12  Code  Gb  HW_GPIO.o [1]
+PORTD_IRQHandler        0x0000337f    0x12  Code  Gb  HW_GPIO.o [1]
+PORTE_IRQHandler        0x00003391    0x12  Code  Gb  HW_GPIO.o [1]
+Pix_Data                0x1fff048c   0x258  Data  Gb  Global_var.o [1]
+Pix_Data_prev           0x1fff06e4   0x258  Data  Gb  Global_var.o [1]
+Region$$Table$$Base     0x00004e38           --   Gb  - Linker created -
+Region$$Table$$Limit    0x00004e48           --   Gb  - Linker created -
+Right_Line              0x1fff1cf0    0xf0  Data  Gb  Global_var.o [1]
+Right_flag              0x1fff2045     0x1  Data  Gb  Steering_Control.o [1]
+SCCB_Ack                0x00003ec1    0x3c  Code  Lc  DEV_SCCB.o [1]
+SCCB_GPIO_init          0x00003dfb    0x34  Code  Gb  DEV_SCCB.o [1]
+SCCB_NoAck              0x00003efd    0x3c  Code  Lc  DEV_SCCB.o [1]
+SCCB_ReadByte           0x000040a1    0x2c  Code  Gb  DEV_SCCB.o [1]
+SCCB_ReadByte_one       0x000040cd    0x84  Code  Lc  DEV_SCCB.o [1]
+SCCB_ReceiveByte        0x00003fc9    0x54  Code  Lc  DEV_SCCB.o [1]
+SCCB_SendByte           0x00003f85    0x44  Code  Lc  DEV_SCCB.o [1]
+SCCB_Start              0x00003e2f    0x5e  Code  Lc  DEV_SCCB.o [1]
+SCCB_Stop               0x00003e8d    0x34  Code  Lc  DEV_SCCB.o [1]
+SCCB_WaitAck            0x00003f39    0x4c  Code  Lc  DEV_SCCB.o [1]
+SCCB_WriteByte          0x00004031    0x28  Code  Gb  DEV_SCCB.o [1]
+SCCB_WriteByte_one      0x00004059    0x48  Code  Lc  DEV_SCCB.o [1]
+SCCB_delay              0x00003de1    0x1a  Code  Lc  DEV_SCCB.o [1]
+SetAddressingMode       0x00002dc1    0x14  Code  Gb  LQ12864.o [1]
+SetContrastControl      0x00002de3    0x14  Code  Gb  LQ12864.o [1]
+SetStartLine            0x00002dd5     0xe  Code  Gb  LQ12864.o [1]
+Set_Charge_Pump         0x00002df7    0x16  Code  Gb  LQ12864.o [1]
+Set_Common_Config       0x00002ea3    0x16  Code  Gb  LQ12864.o [1]
+Set_Common_Remap        0x00002e59     0xe  Code  Gb  LQ12864.o [1]
+Set_Display_Clock       0x00002e7b    0x14  Code  Gb  LQ12864.o [1]
+Set_Display_Offset      0x00002e67    0x14  Code  Gb  LQ12864.o [1]
+Set_Display_On_Off      0x00002e4b     0xe  Code  Gb  LQ12864.o [1]
+Set_Entire_Display      0x00002e1b     0xe  Code  Gb  LQ12864.o [1]
+Set_Inverse_Display     0x00002e29     0xe  Code  Gb  LQ12864.o [1]
+Set_Multiplex_Ratio     0x00002e37    0x14  Code  Gb  LQ12864.o [1]
+Set_Precharge_Period    0x00002e8f    0x14  Code  Gb  LQ12864.o [1]
+Set_Segment_Remap       0x00002e0d     0xe  Code  Gb  LQ12864.o [1]
+Set_VCOMH               0x00002eb9    0x14  Code  Gb  LQ12864.o [1]
+SystemCoreClock         0x1fff0488     0x4  Data  Gb  system_MK60.o [1]
+SystemCoreClockUpdate   0x00001421    0x2e  Code  Gb  system_MK60.o [1]
+SystemInit              0x000012e5   0x13c  Code  Gb  system_MK60.o [1]
+UART0_ERR_IRQHandler    0x0000235d     0x2  Code  Gb  HW_UART.o [1]
+UART0_IRQHandler        0x00002069    0x58  Code  Gb  HW_UART.o [1]
+UART1_ERR_IRQHandler    0x0000235f     0x2  Code  Gb  HW_UART.o [1]
+UART1_IRQHandler        0x000020c1    0x58  Code  Gb  HW_UART.o [1]
+UART2_ERR_IRQHandler    0x00002361     0x2  Code  Gb  HW_UART.o [1]
+UART2_IRQHandler        0x00002119    0x58  Code  Gb  HW_UART.o [1]
+UART3_ERR_IRQHandler    0x00002363     0x2  Code  Gb  HW_UART.o [1]
+UART3_IRQHandler        0x00002171    0x58  Code  Gb  HW_UART.o [1]
+UART4_ERR_IRQHandler    0x00002365     0x2  Code  Gb  HW_UART.o [1]
+UART4_IRQHandler        0x000021c9    0x58  Code  Gb  HW_UART.o [1]
+UART5_ERR_IRQHandler    0x00002367     0x2  Code  Gb  HW_UART.o [1]
+UART5_IRQHandler        0x00002221    0x58  Code  Gb  HW_UART.o [1]
+UART_R_ISR              0x1fff1f48    0x18  Data  Gb  HW_UART.o [1]
+UART_T_ISR              0x1fff1f60    0x18  Data  Gb  HW_UART.o [1]
+VSY_init                0x000035c5    0x36  Code  Gb  OV7725.o [1]
+VSY_init_struct         0x1fff1fbc    0x14  Data  Gb  OV7725.o [1]
+VSY_isr                 0x00003461    0xd8  Code  Gb  OV7725.o [1]
+__BOOT_STACK_ADDRESS {Abs}
+                        0x2000fff8           --   Gb  command line/config [2]
+__VECTOR_RAM {Abs}      0x1fff0000           --   Gb  command line/config [2]
+__VECTOR_TABLE {Abs}    0x00000000           --   Gb  command line/config [2]
+__Vectors               0x00000000           --   Gb  startup_K60D10.o [1]
+__Vectors_End           0x00000400          Data  Gb  startup_K60D10.o [1]
+__Vectors_Size {Abs}    0x00000400           --   Gb  startup_K60D10.o [1]
+__aeabi_cfcmple         0x000033ed          Code  Gb  FltCmpLe.o [4]
+__aeabi_cfrcmple        0x00002c1d          Code  Gb  FltCmpGe.o [4]
+__aeabi_d2f             0x00004969          Code  Gb  DblToFlt.o [4]
+__aeabi_dadd            0x00004881          Code  Gb  DblAdd.o [4]
+__aeabi_f2d             0x00004831          Code  Gb  FltToDbl.o [4]
+__aeabi_f2iz            0x00003221          Code  Gb  FltToS32.o [4]
+__aeabi_f2uiz           0x00003411          Code  Gb  FltToU32.o [4]
+__aeabi_fadd            0x000029d9          Code  Gb  FltAdd.o [4]
+__aeabi_fmul            0x00002a5d          Code  Gb  FltMul.o [4]
+__aeabi_fsub            0x00002b35          Code  Gb  FltSub.o [4]
+__aeabi_i2f             0x000029a5          Code  Gb  I32ToFlt.o [4]
+__aeabi_ui2f            0x000029b9          Code  Gb  I32ToFlt.o [4]
+__cmain                 0x00004fb1          Code  Gb  cmain.o [5]
+__exit                  0x00004fe1    0x14  Code  Gb  exit.o [6]
+__iar_dadd              0x00004895          Code  Gb  DblAdd.o [4]
+__iar_data_init3        0x00004da5    0x28  Code  Gb  data_init.o [5]
+__iar_dsub              0x0000455d          Code  Gb  DblSub.o [4]
+__iar_dsubStart         0x0000456f          Code  Gb  DblSub.o [4]
+__iar_fadd              0x000029e9          Code  Gb  FltAdd.o [4]
+__iar_fsub              0x00002b45          Code  Gb  FltSub.o [4]
+__iar_fsubStart         0x00002b55          Code  Gb  FltSub.o [4]
+__iar_program_start     0x00005229          Code  Gb  cstartup_M.o [5]
+__iar_ui2f              0x000029bd          Code  Gb  I32ToFlt.o [4]
+__iar_unaligned___aeabi_memcpy4
+                        0x00000d6d          Code  Gb  ABImemcpy_unaligned.o [5]
+__iar_unaligned___aeabi_memcpy8
+                        0x00000d6d          Code  Gb  ABImemcpy_unaligned.o [5]
+__iar_zero_init3        0x00000dc3    0x22  Code  Gb  zero_init3.o [5]
+__low_level_init        0x00004fcb     0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000          Data  Gb  startup_K60D10.o [1]
+__vector_table_0x1c     0x0000001c          Data  Gb  startup_K60D10.o [1]
+_call_main              0x00004fbd          Code  Gb  cmain.o [5]
+_exit                   0x00004fd5          Code  Gb  cexit.o [5]
+_main                   0x00004fc7          Code  Gb  cmain.o [5]
+assert_failed           0x00000d59    0x14  Code  Gb  assert.o [1]
+common_relocate         0x00001a3d    0xa0  Code  Gb  relocate.o [1]
+cpu_identify            0x00001479   0x228  Code  Lc  system_MK60.o [1]
+delay                   0x0000390d    0x20  Code  Gb  OV7725.o [1]
+delay1                  0x0000453d    0x1e  Code  Gb  keyboard.o [1]
+device_id               0x1fff2040     0x1  Data  Gb  Global_var.o [1]
+exit                    0x00004fcf     0x4  Code  Gb  exit.o [3]
+flash_identify          0x000016a1    0xa6  Code  Lc  system_MK60.o [1]
+g_bus_clock             0x1fff0478     0x4  Data  Gb  HW_MCG.o [1]
+g_core_clock            0x1fff0474     0x4  Data  Gb  HW_MCG.o [1]
+g_flash_clock           0x1fff047c     0x4  Data  Gb  HW_MCG.o [1]
+g_flexbus_clock         0x1fff0480     0x4  Data  Gb  HW_MCG.o [1]
+get_img                 0x00003559    0x3e  Code  Gb  OV7725.o [1]
+gpio_init_struct_OLED   0x1fff1f78    0x14  Data  Gb  LQ12864.o [1]
+img_extract             0x00003827    0x8a  Code  Gb  OV7725.o [1]
+init_all                0x000047f5    0x3c  Code  Gb  init.o [1]
+init_gpio_OLED          0x00002c41    0x6c  Code  Gb  LQ12864.o [1]
+key                     0x1fff2046     0x1  Data  Gb  SX.o [1]
+key_init                0x00004379    0x60  Code  Gb  keyboard.o [1]
+key_scan                0x000043d9   0x148  Code  Gb  keyboard.o [1]
+last_turn               0x1fff201c     0x4  Data  Gb  Steering_Control.o [1]
+m_abs                   0x00002995     0xe  Code  Gb  Steering_Control.o [1]
+main                    0x000046c9   0x12c  Code  Gb  SX.o [1]
+motor_init              0x000049f9    0x54  Code  Gb  Motor_Control.o [1]
+motor_init_struct       0x1fff1f8c    0x1c  Data  Gb  Motor_Control.o [1]
+out_char                0x000051b9     0xe  Code  Gb  io.o [1]
+ov7725_eagle_img_flag   0x1fff0484     0x1  Data  Gb  OV7725.o [1]
+ov7725_init             0x00003687   0x1a0  Code  Gb  OV7725.o [1]
+pixchange_flag          0x1fff1bfc     0x4  Data  Gb  Global_var.o [1]
+printf                  0x000012a5    0x1e  Code  Gb  printf.o [1]
+printk                  0x00000ebd   0x3e8  Code  Gb  printf.o [1]
+printk_mknumstr         0x00000e11    0x70  Code  Lc  printf.o [1]
+printk_pad_space        0x00000e9f    0x1e  Code  Lc  printf.o [1]
+printk_pad_zero         0x00000e81    0x1e  Code  Lc  printf.o [1]
+printk_putc             0x00000de5    0x2c  Code  Lc  printf.o [1]
+search_line             0x0000258f   0x3ac  Code  Gb  Steering_Control.o [1]
+steering_control        0x000023b1   0x1de  Code  Gb  Steering_Control.o [1]
+steering_d              0x1fff0460     0x4  Data  Gb  Global_var.o [1]
+steering_init           0x00002369    0x48  Code  Gb  Steering_Control.o [1]
+steering_init_struct    0x1fff2024    0x1c  Data  Gb  Steering_Control.o [1]
+steering_left           0x1fff0468     0x4  Data  Gb  Global_var.o [1]
+steering_middle         0x1fff0464     0x4  Data  Gb  Global_var.o [1]
+steering_out            0x1fff0470     0x4  Data  Gb  Global_var.o [1]
+steering_p              0x1fff045c     0x4  Data  Gb  Global_var.o [1]
+steering_right          0x1fff046c     0x4  Data  Gb  Global_var.o [1]
+straight_cross          0x1fff2043     0x1  Data  Gb  Steering_Control.o [1]
+strlen                  0x000012c9    0x1c  Code  Gb  stdlib.o [1]
+turn                    0x1fff2010     0x4  Data  Gb  Steering_Control.o [1]
+turn1                   0x1fff2014     0x4  Data  Gb  Steering_Control.o [1]
+turn2                   0x1fff2018     0x4  Data  Gb  Steering_Control.o [1]
+turn_left               0x1fff2042     0x1  Data  Gb  Global_var.o [1]
+turn_right              0x1fff2041     0x1  Data  Gb  Global_var.o [1]
+
+
+[1] = C:\Users\whstarlit\Desktop\Smart_Car\project\SX_test6_nirvana_twoline\iar\FLASH\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = m7M_tl.a
+[5] = rt7M_tl.a
+[6] = shb_l.a
+
+  18 726 bytes of readonly  code memory
+      76 bytes of readwrite code memory
+   2 454 bytes of readonly  data memory
+  11 243 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

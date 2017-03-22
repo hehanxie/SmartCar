@@ -1,0 +1,384 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.30.3.8024/W32 for ARM        12/Jul/2016  22:23:46
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  C:\Users\whstarlit\Desktop\Smart_Car\lib\LPLD\DEV\key.c
+#    Command line =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\lib\LPLD\DEV\key.c -D LPLD_K60 -D
+#        USE_K60D10 -lCN
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\ -lB
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\ -o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\Obj\
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config
+#        D:\IAR\arm\INC\c\DLib_Config_Normal.h -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\app\ -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\class\
+#        -I C:\Users\whstarlit\Desktop\Smart_Car\lib\ -Ol -I
+#        D:\IAR\arm\CMSIS\Include\ -D ARM_MATH_CM4
+#    List file    =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\key.lst
+#    Object file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\Obj\key.o
+#
+###############################################################################
+
+C:\Users\whstarlit\Desktop\Smart_Car\lib\LPLD\DEV\key.c
+      1          #include "key.h"
+      2          
+      3          
+      4          /*************************************************************************
+      5          *                           嘉庚学院智能车队
+      6          *
+      7          *  函数名称：key_init
+      8          *  功能说明：初始化key端口，设置行为输出，列为下拉输入
+      9          *  参数说明：无
+     10          *  函数返回：无
+     11          *  修改时间：2015-10-2   已测试
+     12          *  备    注：
+     13          *************************************************************************/
+     14          
+     15          
+     16          
+
+   \                                 In section .bss, align 4
+     17            GPIO_InitTypeDef InitGPIOKEY1; 
+   \                     InitGPIOKEY1:
+   \   00000000                      DS8 20
+
+   \                                 In section .bss, align 4
+     18            GPIO_InitTypeDef InitGPIOKEY2;
+   \                     InitGPIOKEY2:
+   \   00000000                      DS8 20
+     19          
+
+   \                                 In section .text, align 2, keep-with-next
+     20          void Keyboard_init()                                               // KEY初始化 函数
+     21          {
+   \                     Keyboard_init: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     22               InitGPIOkey_O();
+   \   00000002   0x.... 0x....      BL       InitGPIOkey_O
+     23               InitGPIOkey_I();
+   \   00000006   0x.... 0x....      BL       InitGPIOkey_I
+     24          } 
+   \   0000000A   0xBD01             POP      {R0,PC}          ;; return
+     25          
+     26          
+     27          /*************************************************************************
+     28          *                             嘉庚学院智能车队
+     29          *
+     30          *  函数名称：key_scan
+     31          *  功能说明:扫描按键的情况
+     32          *  参数说明：无
+     33          *  函数返回：被按下的按键键值,不支持两键同时按下
+     34          *  修改时间：2015-10-2   已测试
+     35          *  备    注：
+     36          *************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     37          uint8 key_scan()
+     38          {
+   \                     key_scan: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+     39          
+     40              uint8 KeyValue =0;//默认没有按键按下
+   \   00000002   0x2400             MOVS     R4,#+0
+     41              int i = 0;//初始扫描的端口
+   \   00000004   0x2500             MOVS     R5,#+0
+     42          //    for(i=11;i<=13;i++)
+     43          //    {
+     44          //      LPLD_GPIO_Output_b(PTC, i, 1);//设置输出高电平
+     45          //      
+     46          //      if(LPLD_GPIO_Input_b(PTC, 14)==1)//表示第一列有按键按下
+     47          //      {
+     48          //        keyValue = 1+(i-11)*3;
+     49          //       while(LPLD_GPIO_Input_b(PTC, 14)==1);//等待按键放开
+     50          //      }
+     51          //      
+     52          //      else if(LPLD_GPIO_Input_b(PTC, 15)==1)//表示第二列有按键按下
+     53          //      {
+     54          //        keyValue = 2+(i-11)*3;
+     55          //        while(LPLD_GPIO_Input_b(PTC, 15)==1);//等待按键放开
+     56          //      }
+     57          //      
+     58          //      else if(LPLD_GPIO_Input_b(PTC, 16)==1)//表示第三列有按键按下
+     59          //      {
+     60          //        keyValue = 3+(i-11)*3;
+     61          //        while(LPLD_GPIO_Input_b(PTC, 16)==1);//等待按键放开
+     62          //      } 
+     63          //     LPLD_GPIO_Output_b(PTC, i, 0);//恢复低电平
+     64          //    }//逐行扫描
+     65              
+     66              for(i = 3;i <= 5;i++)
+   \   00000006   0x2503             MOVS     R5,#+3
+   \   00000008   0xE015             B.N      ??key_scan_0
+     67              {
+     68                LPLD_GPIO_Output_b(PTC, i, 1);//设置输出高电平
+     69                
+     70                if(LPLD_GPIO_Input_b(PTC, 6) == 1)//表示第一列有按键按下
+     71                {
+     72                  KeyValue = 1 + (i - 3) * 3;
+     73                  while(LPLD_GPIO_Input_b(PTC, 6) == 1);//等待按键放开
+     74                }
+     75                
+     76                else if(LPLD_GPIO_Input_b(PTC, 7) == 1)//表示第二列有按键按下
+     77                {
+     78                  KeyValue = 2 + (i - 3) * 3;
+     79                  while(LPLD_GPIO_Input_b(PTC, 7) == 1);//等待按键放开
+     80                }
+     81                
+     82                else if(LPLD_GPIO_Input_b(PTC, 8) == 1)//表示第三列有按键按下
+   \                     ??key_scan_1: (+1)
+   \   0000000A   0x2108             MOVS     R1,#+8
+   \   0000000C   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   0000000E   0x.... 0x....      BL       LPLD_GPIO_Input_b
+   \   00000012   0x2801             CMP      R0,#+1
+   \   00000014   0xD109             BNE.N    ??key_scan_2
+     83                {
+     84                  KeyValue = 3 + (i - 3) * 3;
+   \   00000016   0x2003             MOVS     R0,#+3
+   \   00000018   0xFB00 0xF005      MUL      R0,R0,R5
+   \   0000001C   0x1F84             SUBS     R4,R0,#+6
+     85                  while(LPLD_GPIO_Input_b(PTC, 8) == 1);//等待按键放开
+   \                     ??key_scan_3: (+1)
+   \   0000001E   0x2108             MOVS     R1,#+8
+   \   00000020   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   00000022   0x.... 0x....      BL       LPLD_GPIO_Input_b
+   \   00000026   0x2801             CMP      R0,#+1
+   \   00000028   0xD0F9             BEQ.N    ??key_scan_3
+     86                }
+     87                LPLD_GPIO_Output_b(PTC, i, 0);//恢复低电平
+   \                     ??key_scan_2: (+1)
+   \   0000002A   0x2200             MOVS     R2,#+0
+   \   0000002C   0x0029             MOVS     R1,R5
+   \   0000002E   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   00000030   0x.... 0x....      BL       LPLD_GPIO_Output_b
+   \   00000034   0x1C6D             ADDS     R5,R5,#+1
+   \                     ??key_scan_0: (+1)
+   \   00000036   0x2D06             CMP      R5,#+6
+   \   00000038   0xDA27             BGE.N    ??key_scan_4
+   \   0000003A   0x2201             MOVS     R2,#+1
+   \   0000003C   0x0029             MOVS     R1,R5
+   \   0000003E   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   00000040   0x.... 0x....      BL       LPLD_GPIO_Output_b
+   \   00000044   0x2106             MOVS     R1,#+6
+   \   00000046   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   00000048   0x.... 0x....      BL       LPLD_GPIO_Input_b
+   \   0000004C   0x2801             CMP      R0,#+1
+   \   0000004E   0xD10B             BNE.N    ??key_scan_5
+   \   00000050   0x2003             MOVS     R0,#+3
+   \   00000052   0xFB00 0xF005      MUL      R0,R0,R5
+   \   00000056   0xF1B0 0x0408      SUBS     R4,R0,#+8
+   \                     ??key_scan_6: (+1)
+   \   0000005A   0x2106             MOVS     R1,#+6
+   \   0000005C   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   0000005E   0x.... 0x....      BL       LPLD_GPIO_Input_b
+   \   00000062   0x2801             CMP      R0,#+1
+   \   00000064   0xD1E1             BNE.N    ??key_scan_2
+   \   00000066   0xE7F8             B.N      ??key_scan_6
+   \                     ??key_scan_5: (+1)
+   \   00000068   0x2107             MOVS     R1,#+7
+   \   0000006A   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   0000006C   0x.... 0x....      BL       LPLD_GPIO_Input_b
+   \   00000070   0x2801             CMP      R0,#+1
+   \   00000072   0xD1CA             BNE.N    ??key_scan_1
+   \   00000074   0x2003             MOVS     R0,#+3
+   \   00000076   0xFB00 0xF005      MUL      R0,R0,R5
+   \   0000007A   0x1FC4             SUBS     R4,R0,#+7
+   \                     ??key_scan_7: (+1)
+   \   0000007C   0x2107             MOVS     R1,#+7
+   \   0000007E   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   00000080   0x.... 0x....      BL       LPLD_GPIO_Input_b
+   \   00000084   0x2801             CMP      R0,#+1
+   \   00000086   0xD1D0             BNE.N    ??key_scan_2
+   \   00000088   0xE7F8             B.N      ??key_scan_7
+     88              }//逐行扫描
+     89              return KeyValue;
+   \                     ??key_scan_4: (+1)
+   \   0000008A   0x0020             MOVS     R0,R4
+   \   0000008C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000008E   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+     90          }
+     91          
+     92          
+
+   \                                 In section .text, align 2, keep-with-next
+     93          void InitGPIOkey_O()
+     94          {
+   \                     InitGPIOkey_O: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     95            /*配置结构体的GPIO_PTx变量，选择使用PTD组的PTE引脚
+     96             *配置结构体的GPIO_Pins变量，选择使用编号为E0 -- E6的引脚
+     97             *配置结构体的GPIO_Dir变量，设置PTD的相关引脚方向为输出
+     98             *配置结构体的GPIO_Output变量，设置PTD的相关引脚初始化输出为高电平
+     99             *配置结构体的GPIO_PinControl变量，配置端口的控制模式为禁止中断
+    100             *调用GPIO初始化的库函数，并将初始化结构体变量传入其中，完成初始化*/
+    101          
+    102          //  InitGPIOKEY1.GPIO_PTx = PTC;
+    103          //  InitGPIOKEY1.GPIO_Pins = GPIO_Pin11 | GPIO_Pin12 | GPIO_Pin13;
+    104          //  InitGPIOKEY1.GPIO_Dir = DIR_OUTPUT;
+    105          //  InitGPIOKEY1.GPIO_Output = OUTPUT_L;
+    106          //  InitGPIOKEY1.GPIO_PinControl = IRQC_DIS;
+    107          //  LPLD_GPIO_Init(InitGPIOKEY1);
+    108            
+    109            
+    110            InitGPIOKEY1.GPIO_PTx = PTC;
+   \   00000002   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   00000004   0x....             LDR.N    R1,??DataTable2_1
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+    111            InitGPIOKEY1.GPIO_Pins = GPIO_Pin3 | GPIO_Pin4 | GPIO_Pin5;
+   \   00000008   0x2038             MOVS     R0,#+56
+   \   0000000A   0x....             LDR.N    R1,??DataTable2_1
+   \   0000000C   0x6048             STR      R0,[R1, #+4]
+    112            InitGPIOKEY1.GPIO_Dir = DIR_OUTPUT;
+   \   0000000E   0x2001             MOVS     R0,#+1
+   \   00000010   0x....             LDR.N    R1,??DataTable2_1
+   \   00000012   0x7308             STRB     R0,[R1, #+12]
+    113            InitGPIOKEY1.GPIO_Output = OUTPUT_L;
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x....             LDR.N    R1,??DataTable2_1
+   \   00000018   0x7348             STRB     R0,[R1, #+13]
+    114            InitGPIOKEY1.GPIO_PinControl = IRQC_DIS;
+   \   0000001A   0x2000             MOVS     R0,#+0
+   \   0000001C   0x....             LDR.N    R1,??DataTable2_1
+   \   0000001E   0x6088             STR      R0,[R1, #+8]
+    115            LPLD_GPIO_Init(InitGPIOKEY1);
+   \   00000020   0x....             LDR.N    R1,??DataTable2_1
+   \   00000022   0xB084             SUB      SP,SP,#+16
+   \   00000024   0x4668             MOV      R0,SP
+   \   00000026   0x2214             MOVS     R2,#+20
+   \   00000028   0x.... 0x....      BL       __aeabi_memcpy4
+   \   0000002C   0xBC0F             POP      {R0-R3}
+   \   0000002E   0x.... 0x....      BL       LPLD_GPIO_Init
+    116          }
+   \   00000032   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+    117          void InitGPIOkey_I()
+    118          {
+   \                     InitGPIOkey_I: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    119            /*配置结构体的GPIO_PTx变量，选择使用PTD组的PTE引脚
+    120             *配置结构体的GPIO_Pins变量，选择使用编号为E0 -- E6的引脚
+    121             *配置结构体的GPIO_Dir变量，设置PTD的相关引脚方向为输入
+    122             *配置结构体的GPIO_PinControl变量，配置端口的控制模式为禁止中断
+    123             *调用GPIO初始化的库函数，并将初始化结构体变量传入其中，完成初始化*/
+    124          //  InitGPIOKEY2.GPIO_PTx = PTC;
+    125          //  InitGPIOKEY2.GPIO_Pins =GPIO_Pin14 | GPIO_Pin15 | GPIO_Pin16;
+    126          //  InitGPIOKEY2.GPIO_Dir = DIR_INPUT;
+    127          //  InitGPIOKEY2.GPIO_PinControl = INPUT_PULL_DOWN;
+    128          //  LPLD_GPIO_Init(InitGPIOKEY2);
+    129            
+    130            InitGPIOKEY2.GPIO_PTx = PTC;
+   \   00000002   0x....             LDR.N    R0,??DataTable2  ;; 0x400ff080
+   \   00000004   0x....             LDR.N    R1,??DataTable2_2
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+    131            InitGPIOKEY2.GPIO_Pins =GPIO_Pin6 | GPIO_Pin7 | GPIO_Pin8;
+   \   00000008   0xF44F 0x70E0      MOV      R0,#+448
+   \   0000000C   0x....             LDR.N    R1,??DataTable2_2
+   \   0000000E   0x6048             STR      R0,[R1, #+4]
+    132            
+    133            InitGPIOKEY2.GPIO_Dir = DIR_INPUT;
+   \   00000010   0x2000             MOVS     R0,#+0
+   \   00000012   0x....             LDR.N    R1,??DataTable2_2
+   \   00000014   0x7308             STRB     R0,[R1, #+12]
+    134            InitGPIOKEY2.GPIO_PinControl = INPUT_PULL_DOWN;
+   \   00000016   0x2002             MOVS     R0,#+2
+   \   00000018   0x....             LDR.N    R1,??DataTable2_2
+   \   0000001A   0x6088             STR      R0,[R1, #+8]
+    135            LPLD_GPIO_Init(InitGPIOKEY2);
+   \   0000001C   0x....             LDR.N    R1,??DataTable2_2
+   \   0000001E   0xB084             SUB      SP,SP,#+16
+   \   00000020   0x4668             MOV      R0,SP
+   \   00000022   0x2214             MOVS     R2,#+20
+   \   00000024   0x.... 0x....      BL       __aeabi_memcpy4
+   \   00000028   0xBC0F             POP      {R0-R3}
+   \   0000002A   0x.... 0x....      BL       LPLD_GPIO_Init
+    136          }
+   \   0000002E   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x400FF080         DC32     0x400ff080
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     InitGPIOKEY1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0x........         DC32     InitGPIOKEY2
+    137          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      24   InitGPIOkey_I
+         8   -> LPLD_GPIO_Init
+        24   -> __aeabi_memcpy4
+      24   InitGPIOkey_O
+         8   -> LPLD_GPIO_Init
+        24   -> __aeabi_memcpy4
+       8   Keyboard_init
+         8   -> InitGPIOkey_I
+         8   -> InitGPIOkey_O
+      16   key_scan
+        16   -> LPLD_GPIO_Input_b
+        16   -> LPLD_GPIO_Output_b
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+      20  InitGPIOKEY1
+      20  InitGPIOKEY2
+      48  InitGPIOkey_I
+      52  InitGPIOkey_O
+      12  Keyboard_init
+     144  key_scan
+
+ 
+  40 bytes in section .bss
+ 268 bytes in section .text
+ 
+ 268 bytes of CODE memory
+  40 bytes of DATA memory
+
+Errors: none
+Warnings: none

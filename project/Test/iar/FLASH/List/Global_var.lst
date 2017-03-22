@@ -1,0 +1,536 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.30.3.8024/W32 for ARM        19/Jul/2016  11:51:43
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\lib\LPLD\DEV\Global_var.c
+#    Command line =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\lib\LPLD\DEV\Global_var.c -D
+#        LPLD_K60 -D USE_K60D10 -lCN
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\ -lB
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\ -o
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\Obj\
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config
+#        D:\IAR\arm\INC\c\DLib_Config_Normal.h -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\app\ -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\..\..\..\lib\USB\class\
+#        -I C:\Users\whstarlit\Desktop\Smart_Car\lib\ -Ol -I
+#        D:\IAR\arm\CMSIS\Include\ -D ARM_MATH_CM4
+#    List file    =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\List\Global_var.lst
+#    Object file  =  
+#        C:\Users\whstarlit\Desktop\Smart_Car\project\Test\iar\FLASH\Obj\Global_var.o
+#
+###############################################################################
+
+C:\Users\whstarlit\Desktop\Smart_Car\lib\LPLD\DEV\Global_var.c
+      1          #include "include.h"
+      2          
+      3          
+
+   \                                 In section .bss, align 4
+      4          uint8 Pix_Data[MAX_ROW*MAX_COL/8];     //采集60行 80列的图像数据  60*80/8;
+   \                     Pix_Data:
+   \   00000000                      DS8 600
+
+   \                                 In section .bss, align 4
+      5          uint8 Img[MAX_ROW][MAX_COL];          //解压后的数据
+   \                     Img:
+   \   00000000                      DS8 4800
+
+   \                                 In section .bss, align 1
+      6          uint8 camera_flag = 0;                //0表示不可采集，1表示可以采集
+   \                     camera_flag:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 1
+      7          uint8 show_img_flag = 0;              //0表示不可显示，1表示可以显示
+   \                     show_img_flag:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 1
+      8          uint8 device_id = 0;
+   \                     device_id:
+   \   00000000                      DS8 1
+      9          
+     10          
+     11          
+     12          /*--------------------全局初始变量--------------------*/
+
+   \                                 In section .bss, align 1
+     13          uint8 keyValue = 0;                   //输入键盘的值
+   \                     keyValue:
+   \   00000000                      DS8 1
+
+   \                                 In section .data, align 4
+     14          float P = 35;
+   \                     P:
+   \   00000000   0x420C0000         DC32 420C0000H
+
+   \                                 In section .data, align 4
+     15          float D = 35;
+   \                     D:
+   \   00000000   0x420C0000         DC32 420C0000H
+
+   \                                 In section .data, align 4
+     16          int angle = 720;                  //舵机初始化值
+   \                     angle:
+   \   00000000   0x000002D0         DC32 720
+
+   \                                 In section .data, align 4
+     17          int leftMaxAngle = 635;           //最大左打角
+   \                     leftMaxAngle:
+   \   00000000   0x0000027B         DC32 635
+
+   \                                 In section .data, align 4
+     18          int rightMaxAngle = 815;          //最大右打角
+   \                     rightMaxAngle:
+   \   00000000   0x0000032F         DC32 815
+
+   \                                 In section .data, align 4
+     19          int midAngle = 720;               //舵机中点值
+   \                     midAngle:
+   \   00000000   0x000002D0         DC32 720
+
+   \                                 In section .data, align 4
+     20          float CAR_SPEED_SET = 100;        //预设速度
+   \                     CAR_SPEED_SET:
+   \   00000000   0x42C80000         DC32 42C80000H
+
+   \                                 In section .data, align 4
+     21          float crossScale = 0.8;           //误差比例
+   \                     crossScale:
+   \   00000000   0x3F4CCCCD         DC32 3F4CCCCDH
+
+   \                                 In section .data, align 4
+     22          int SPEED = 2000;
+   \                     SPEED:
+   \   00000000   0x000007D0         DC32 2000
+     23          
+     24          /*-------------速度控制变量-------------*/
+     25           
+
+   \                                 In section .bss, align 1
+     26          uint8 start = 0;
+   \                     start:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 4
+     27          int speedCount = 0;
+   \                     speedCount:
+   \   00000000                      DS8 4
+     28          //uint8 speedFlag = 0;
+
+   \                                 In section .data, align 4
+     29          float P_Speed = 50;                             //速度控制P   
+   \                     P_Speed:
+   \   00000000   0x42480000         DC32 42480000H
+
+   \                                 In section .data, align 4
+     30          float I_Speed = 25;                             //速度控制I  
+   \                     I_Speed:
+   \   00000000   0x41C80000         DC32 41C80000H
+
+   \                                 In section .data, align 4
+     31          float D_Speed = 8;                              //速度控制D  
+   \                     D_Speed:
+   \   00000000   0x41000000         DC32 41000000H
+
+   \                                 In section .bss, align 4
+     32          float P_speed_out = 0;                          //速度控制中P的输出量
+   \                     P_speed_out:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     33          float I_speed_out = 0;                          //速度控制中I的输出量
+   \                     I_speed_out:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     34          float D_speed_out = 0;                          //速度控制中D的输出量
+   \                     D_speed_out:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     35          float speed_control_integeral = 0;              //i的积分
+   \                     speed_control_integeral:
+   \   00000000                      DS8 4
+
+   \                                 In section .data, align 4
+     36          float speed_control_integeral_Max = 10000;      //i的积分最大值
+   \                     speed_control_integeral_Max:
+   \   00000000   0x461C4000         DC32 461C4000H
+
+   \                                 In section .data, align 4
+     37          float speed_control_integeral_Min = -10000;     //i的积分最小值
+   \                     speed_control_integeral_Min:
+   \   00000000   0xC61C4000         DC32 0C61C4000H
+
+   \                                 In section .bss, align 4
+     38          float dir_speed_radio = 0;                      //微分速度比
+   \                     dir_speed_radio:
+   \   00000000                      DS8 4
+
+   \                                 In section .data, align 4
+     39          float Speed_Control_Max = 9500;                 //速度控制最大值
+   \                     Speed_Control_Max:
+   \   00000000   0x46147000         DC32 46147000H
+
+   \                                 In section .data, align 4
+     40          float Speed_Control_Min = -8000;                //速度控制最小值
+   \                     Speed_Control_Min:
+   \   00000000   0xC5FA0000         DC32 0C5FA0000H
+
+   \                                 In section .bss, align 4
+     41          int   Speed_Control_Period = 0;                 //车速控制的周期数
+   \                     Speed_Control_Period:
+   \   00000000                      DS8 4
+
+   \                                 In section .data, align 4
+     42          float SPEED_CONTROL_PERIOD = 8;  
+   \                     SPEED_CONTROL_PERIOD:
+   \   00000000   0x41000000         DC32 41000000H
+
+   \                                 In section .bss, align 4
+     43          float Speed_Car_Old;                            //旧速度(速度控制PID中用到)
+   \                     Speed_Car_Old:
+   \   00000000                      DS8 4
+
+   \                                 In section .data, align 4
+     44          float Speed_Car_New = 1000;                            //新速度(速度控制PID中用到)
+   \                     Speed_Car_New:
+   \   00000000   0x447A0000         DC32 447A0000H
+
+   \                                 In section .bss, align 4
+     45          float Speed_Car;                                //当前速度
+   \                     Speed_Car:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     46          float Speed_Control_Out;                        //速度控制输出速度
+   \                     Speed_Control_Out:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     47          float Speed_Car_err = 0;             
+   \                     Speed_Car_err:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     48          float ref_speed = 0;                            //加减速 
+   \                     ref_speed:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     49          float last_ref_speed = 0;                       //过去加减速
+   \                     last_ref_speed:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     50          float before_last_ref_speed = 0;   
+   \                     before_last_ref_speed:
+   \   00000000                      DS8 4
+     51          
+     52          /*----------------------------------------------------------------------*/
+     53          
+     54          
+     55          
+     56          /*-----------扫描图像------------*/
+     57          //图像在该行的最后一个白点
+
+   \                                 In section .bss, align 4
+     58          int leftDot[MAX_ROW];         //左边点位置
+   \                     leftDot:
+   \   00000000                      DS8 240
+
+   \                                 In section .bss, align 4
+     59          int rightDot[MAX_ROW];        //右边点位置
+   \                     rightDot:
+   \   00000000                      DS8 240
+
+   \                                 In section .bss, align 4
+     60          int midDot[MAX_ROW];          //中点位置
+   \                     midDot:
+   \   00000000                      DS8 240
+
+   \                                 In section .bss, align 4
+     61          int countBlack[MAX_ROW];      //黑点个数
+   \                     countBlack:
+   \   00000000                      DS8 240
+
+   \                                 In section .data, align 4
+     62          int absMid = MAX_COL/2 - 6;     //图像中值
+   \                     absMid:
+   \   00000000   0x00000022         DC32 34
+
+   \                                 In section .data, align 4
+     63          int startLine = MAX_ROW-13;    //开始行
+   \                     startLine:
+   \   00000000   0x0000002F         DC32 47
+
+   \                                 In section .data, align 4
+     64          int endLine = 20;             //结束行 <= 预判行
+   \                     endLine:
+   \   00000000   0x00000014         DC32 20
+
+   \                                 In section .bss, align 4
+     65          int Left;                     //左赛道边界
+   \                     Left:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     66          int Right;                    //右赛道边界
+   \                     Right:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     67          int lostSide = 0;             //赛道哪边丢线
+   \                     lostSide:
+   \   00000000                      DS8 4
+     68          
+     69          
+     70          /*------------十字判定------------*/
+
+   \                                 In section .bss, align 4
+     71          int vertical[MAX_COL];        //竖直搜点
+   \                     vertical:
+   \   00000000                      DS8 320
+
+   \                                 In section .data, align 4
+     72          int runwayType = 9;           //赛道类型
+   \                     runwayType:
+   \   00000000   0x00000009         DC32 9
+
+   \                                 In section .bss, align 4
+     73          int crossFlag = 0;            //十字标志
+   \                     crossFlag:
+   \   00000000                      DS8 4
+     74          
+
+   \                                 In section .data, align 4
+     75          int index1 = -1;              //突变点坐标
+   \                     index1:
+   \   00000000   0xFFFFFFFF         DC32 -1
+
+   \                                 In section .data, align 4
+     76          int index2 = -1;
+   \                     index2:
+   \   00000000   0xFFFFFFFF         DC32 -1
+
+   \                                 In section .data, align 4
+     77          int index3 = -1;
+   \                     index3:
+   \   00000000   0xFFFFFFFF         DC32 -1
+
+   \                                 In section .data, align 4
+     78          int index4 = -1;
+   \                     index4:
+   \   00000000   0xFFFFFFFF         DC32 -1
+
+   \                                 In section .data, align 4
+     79          int col1 = -1;
+   \                     col1:
+   \   00000000   0xFFFFFFFF         DC32 -1
+
+   \                                 In section .data, align 4
+     80          int col2 = -1;
+   \                     col2:
+   \   00000000   0xFFFFFFFF         DC32 -1
+
+   \                                 In section .data, align 4
+     81          int col3 = -1;
+   \                     col3:
+   \   00000000   0xFFFFFFFF         DC32 -1
+
+   \                                 In section .data, align 4
+     82          int col4 = -1;
+   \                     col4:
+   \   00000000   0xFFFFFFFF         DC32 -1
+     83          
+     84          /*----------方向控制变量----------*/
+
+   \                                 In section .data, align 4
+     85          int advanceLine = 20;         //预判行
+   \                     advanceLine:
+   \   00000000   0x00000014         DC32 20
+
+   \                                 In section .data, align 4
+     86          int Line1 = 25;               //控制行
+   \                     Line1:
+   \   00000000   0x00000019         DC32 25
+
+   \                                 In section .data, align 4
+     87          int Line2 = 35;
+   \                     Line2:
+   \   00000000   0x00000023         DC32 35
+
+   \                                 In section .data, align 4
+     88          int Line3 = 45;
+   \                     Line3:
+   \   00000000   0x0000002D         DC32 45
+     89          
+
+   \                                 In section .bss, align 4
+     90          int curAver;
+   \                     curAver:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     91          int devAver;
+   \                     devAver:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     92          int averData[3] = {0};
+   \                     averData:
+   \   00000000                      DS8 12
+
+   \                                 In section .bss, align 4
+     93          int sumAverData;
+   \                     sumAverData:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     94          int countAver;
+   \                     countAver:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     95          int preAver;
+   \                     preAver:
+   \   00000000                      DS8 4
+     96                  
+     97          
+     98          /*
+     99          //控制变量(面积)
+    100          int line1;                  //三个定行
+    101          int line2;
+    102          int line3;
+    103          int s;                      //当前面积
+    104          int preS;                   //上次面积
+    105          int ctrLine = 35;           
+    106          float deviation = 0;        //两次面积的差
+    107          */
+    108          
+    109          /*----------------------------------------------------------------------*/
+    110          
+    111          
+    112          
+    113          
+    114          
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  CAR_SPEED_SET
+       4  D
+       4  D_Speed
+       4  D_speed_out
+       4  I_Speed
+       4  I_speed_out
+    4800  Img
+       4  Left
+       4  Line1
+       4  Line2
+       4  Line3
+       4  P
+       4  P_Speed
+       4  P_speed_out
+     600  Pix_Data
+       4  Right
+       4  SPEED
+       4  SPEED_CONTROL_PERIOD
+       4  Speed_Car
+       4  Speed_Car_New
+       4  Speed_Car_Old
+       4  Speed_Car_err
+       4  Speed_Control_Max
+       4  Speed_Control_Min
+       4  Speed_Control_Out
+       4  Speed_Control_Period
+       4  absMid
+       4  advanceLine
+       4  angle
+      12  averData
+       4  before_last_ref_speed
+       1  camera_flag
+       4  col1
+       4  col2
+       4  col3
+       4  col4
+       4  countAver
+     240  countBlack
+       4  crossFlag
+       4  crossScale
+       4  curAver
+       4  devAver
+       1  device_id
+       4  dir_speed_radio
+       4  endLine
+       4  index1
+       4  index2
+       4  index3
+       4  index4
+       1  keyValue
+       4  last_ref_speed
+     240  leftDot
+       4  leftMaxAngle
+       4  lostSide
+       4  midAngle
+     240  midDot
+       4  preAver
+       4  ref_speed
+     240  rightDot
+       4  rightMaxAngle
+       4  runwayType
+       1  show_img_flag
+       4  speedCount
+       4  speed_control_integeral
+       4  speed_control_integeral_Max
+       4  speed_control_integeral_Min
+       1  start
+       4  startLine
+       4  sumAverData
+     320  vertical
+
+ 
+ 6 789 bytes in section .bss
+   136 bytes in section .data
+ 
+ 6 925 bytes of DATA memory
+
+Errors: none
+Warnings: none

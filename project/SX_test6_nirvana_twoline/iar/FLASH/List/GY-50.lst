@@ -1,0 +1,672 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.20.2.7424/W32 for ARM        15/Dec/2015  02:03:30
+# Copyright 1999-2014 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  F:\Freescale\Bubble_Kinetis\project\SX\app\GY-50.c
+#    Command line =  
+#        F:\Freescale\Bubble_Kinetis\project\SX\app\GY-50.c -D LPLD_K60 -D
+#        USE_K60D10 -lCN F:\Freescale\Bubble_Kinetis\project\SX\iar\FLASH\List\
+#        -lB F:\Freescale\Bubble_Kinetis\project\SX\iar\FLASH\List\ -o
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\FLASH\Obj\ --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None
+#        --dlib_config "D:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.0\arm\INC\c\DLib_Config_Normal.h" -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\app\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\CPU\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\common\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\LPLD\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\LPLD\HW\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\LPLD\DEV\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\LPLD\FUNC\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\uCOS-II\Source\
+#        -I F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\FatFs\ -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\FatFs\option\
+#        -I F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\USB\common\
+#        -I F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\USB\driver\
+#        -I
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\USB\descriptor\
+#        -I F:\Freescale\Bubble_Kinetis\project\SX\iar\..\..\..\lib\USB\class\
+#        -Ol -I "D:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.0\arm\CMSIS\Include\" -D ARM_MATH_CM4
+#    List file    =  
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\FLASH\List\GY-50.lst
+#    Object file  =  
+#        F:\Freescale\Bubble_Kinetis\project\SX\iar\FLASH\Obj\GY-50.o
+#
+###############################################################################
+
+F:\Freescale\Bubble_Kinetis\project\SX\app\GY-50.c
+      1          #include "include.h"
+      2          
+
+   \                                 In section .bss, align 4
+      3          GPIO_InitTypeDef pta_IIC;
+   \                     pta_IIC:
+   \   00000000                      DS8 20
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+      5          void LPLD_IIC_Init(void)
+      6          {
+   \                     LPLD_IIC_Init: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+      7            /********用户可修改值 开始***********/
+      8            pta_IIC.GPIO_PTx = PTA;
+   \   00000002   0x....             LDR.N    R0,??DataTable5  ;; 0x400ff000
+   \   00000004   0x....             LDR.N    R1,??DataTable5_1
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+      9            pta_IIC.GPIO_Pins = GPIO_Pin12 | GPIO_Pin13;
+   \   00000008   0xF44F 0x5040      MOV      R0,#+12288
+   \   0000000C   0x....             LDR.N    R1,??DataTable5_1
+   \   0000000E   0x6048             STR      R0,[R1, #+4]
+     10            /********用户可修改值 结束***********/
+     11            pta_IIC.GPIO_Dir = DIR_OUTPUT;
+   \   00000010   0x2001             MOVS     R0,#+1
+   \   00000012   0x....             LDR.N    R1,??DataTable5_1
+   \   00000014   0x7308             STRB     R0,[R1, #+12]
+     12            pta_IIC.GPIO_Output = OUTPUT_H;
+   \   00000016   0x2001             MOVS     R0,#+1
+   \   00000018   0x....             LDR.N    R1,??DataTable5_1
+   \   0000001A   0x7348             STRB     R0,[R1, #+13]
+     13            pta_IIC.GPIO_PinControl = NULL;
+   \   0000001C   0x2000             MOVS     R0,#+0
+   \   0000001E   0x....             LDR.N    R1,??DataTable5_1
+   \   00000020   0x6088             STR      R0,[R1, #+8]
+     14            LPLD_GPIO_Init(pta_IIC);
+   \   00000022   0x....             LDR.N    R1,??DataTable5_1
+   \   00000024   0xB084             SUB      SP,SP,#+16
+   \   00000026   0x4668             MOV      R0,SP
+   \   00000028   0x2214             MOVS     R2,#+20
+   \   0000002A   0x.... 0x....      BL       __aeabi_memcpy4
+   \   0000002E   0xBC0F             POP      {R0-R3}
+   \   00000030   0x.... 0x....      BL       LPLD_GPIO_Init
+     15          }
+   \   00000034   0xBD01             POP      {R0,PC}          ;; return
+     16          
+     17          
+     18          /**************************************
+     19          延时5微秒(STC90C52RC@12M)
+     20          不同的工作环境,需要调整此函数，注意时钟过快时需要修改
+     21          当改用1T的MCU时,请调整此延时函数
+     22          **************************************/
+     23          //void Delay5us()
+     24          //{
+     25          //   for(int i =0;i<1;i++)
+     26          //       for(int j = 0;j < 25;j++)
+     27          //     {;}
+     28          //}
+     29          
+
+   \                                 In section .text, align 2, keep-with-next
+     30          void Delay5us()
+     31          {
+     32            for(int i =0;i<1;i++)
+   \                     Delay5us: (+1)
+   \   00000000   0x2000             MOVS     R0,#+0
+   \   00000002   0xE003             B.N      ??Delay5us_0
+     33              for(int j = 0;j < 15;j++)
+   \                     ??Delay5us_1: (+1)
+   \   00000004   0x1C49             ADDS     R1,R1,#+1
+   \                     ??Delay5us_2: (+1)
+   \   00000006   0x290F             CMP      R1,#+15
+   \   00000008   0xDBFC             BLT.N    ??Delay5us_1
+   \   0000000A   0x1C40             ADDS     R0,R0,#+1
+   \                     ??Delay5us_0: (+1)
+   \   0000000C   0x2801             CMP      R0,#+1
+   \   0000000E   0xDA01             BGE.N    ??Delay5us_3
+   \   00000010   0x2100             MOVS     R1,#+0
+   \   00000012   0xE7F8             B.N      ??Delay5us_2
+     34              {;}
+     35          }
+   \                     ??Delay5us_3: (+1)
+   \   00000014   0x4770             BX       LR               ;; return
+     36          
+     37          /**************************************
+     38          起始信号
+     39          **************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     40          void IIC_Start(void)
+     41          
+     42          {
+   \                     IIC_Start: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     43                  SCL_Out;
+   \   00000002   0x2001             MOVS     R0,#+1
+   \   00000004   0x....             LDR.N    R1,??DataTable5_2  ;; 0x43fe02b0
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+     44                  SDA_Out;                        //输出
+   \   00000008   0x2001             MOVS     R0,#+1
+   \   0000000A   0x....             LDR.N    R1,??DataTable5_3  ;; 0x43fe02b4
+   \   0000000C   0x6008             STR      R0,[R1, #+0]
+     45                  //dwt_delay_us(1000);
+     46          	SDA=1;
+   \   0000000E   0x2001             MOVS     R0,#+1
+   \   00000010   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000012   0x6008             STR      R0,[R1, #+0]
+     47                  //dwt_delay_us(1000);
+     48                  SCL=1;
+   \   00000014   0x2001             MOVS     R0,#+1
+   \   00000016   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000018   0x6008             STR      R0,[R1, #+0]
+     49          	Delay5us();
+   \   0000001A   0x.... 0x....      BL       Delay5us
+     50          	SDA=0;
+   \   0000001E   0x2000             MOVS     R0,#+0
+   \   00000020   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000022   0x6008             STR      R0,[R1, #+0]
+     51          	Delay5us();
+   \   00000024   0x.... 0x....      BL       Delay5us
+     52          	SCL=0;
+   \   00000028   0x2000             MOVS     R0,#+0
+   \   0000002A   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   0000002C   0x6008             STR      R0,[R1, #+0]
+     53          	//Delay5us();
+     54          	//SCL=0;
+     55                  //dwt_delay_us(2000);
+     56          }
+   \   0000002E   0xBD01             POP      {R0,PC}          ;; return
+     57          
+     58          /**************************************
+     59          停止信号
+     60          **************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     61          void IIC_Stop(void)
+     62          //送停止位 SDA=0->1
+     63          {
+   \                     IIC_Stop: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     64          	SDA_Out;
+   \   00000002   0x2001             MOVS     R0,#+1
+   \   00000004   0x....             LDR.N    R1,??DataTable5_3  ;; 0x43fe02b4
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+     65          	SCL_Out;
+   \   00000008   0x2001             MOVS     R0,#+1
+   \   0000000A   0x....             LDR.N    R1,??DataTable5_2  ;; 0x43fe02b0
+   \   0000000C   0x6008             STR      R0,[R1, #+0]
+     66          	//dwt_delay_us(1000);
+     67          	SDA=0; //发送结束条件的数据信号
+   \   0000000E   0x2000             MOVS     R0,#+0
+   \   00000010   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000012   0x6008             STR      R0,[R1, #+0]
+     68          	//dwt_delay_us(1000);
+     69          	SCL=1; //发送结束条件的时钟信号
+   \   00000014   0x2001             MOVS     R0,#+1
+   \   00000016   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000018   0x6008             STR      R0,[R1, #+0]
+     70          	Delay5us();
+   \   0000001A   0x.... 0x....      BL       Delay5us
+     71          	SDA=1; //发送I2C总线结束信号
+   \   0000001E   0x2001             MOVS     R0,#+1
+   \   00000020   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000022   0x6008             STR      R0,[R1, #+0]
+     72          	Delay5us();      
+   \   00000024   0x.... 0x....      BL       Delay5us
+     73                  SCL=0;//***
+   \   00000028   0x2000             MOVS     R0,#+0
+   \   0000002A   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   0000002C   0x6008             STR      R0,[R1, #+0]
+     74            
+     75            
+     76            /*SDA_Out;                        //输出
+     77          	SCL=0;
+     78          	Delay5us();
+     79          	SDA=0;
+     80          	Delay5us();
+     81          	SCL=1;
+     82          	Delay5us();
+     83          	SDA=1;
+     84          	Delay5us();
+     85          	SCL=0;*/
+     86          }
+   \   0000002E   0xBD01             POP      {R0,PC}          ;; return
+     87          
+     88          /**************************************
+     89          发送应答信号
+     90          入口参数:ack (0:ACK 1:NAK)
+     91          **************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     92          void L3G4200D_SendACK(BYTE a)
+     93          {    
+   \                     L3G4200D_SendACK: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     94              SDA_Out;
+   \   00000002   0x2101             MOVS     R1,#+1
+   \   00000004   0x....             LDR.N    R2,??DataTable5_3  ;; 0x43fe02b4
+   \   00000006   0x6011             STR      R1,[R2, #+0]
+     95          	SCL_Out;
+   \   00000008   0x2101             MOVS     R1,#+1
+   \   0000000A   0x....             LDR.N    R2,??DataTable5_2  ;; 0x43fe02b0
+   \   0000000C   0x6011             STR      R1,[R2, #+0]
+     96          	//dwt_delay_us(1000);
+     97          	if(a==0) SDA=0; //在此发出应答或非应答信号
+   \   0000000E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000010   0x2800             CMP      R0,#+0
+   \   00000012   0xD103             BNE.N    ??L3G4200D_SendACK_0
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000018   0x6008             STR      R0,[R1, #+0]
+   \   0000001A   0xE002             B.N      ??L3G4200D_SendACK_1
+     98          	else SDA=1;
+   \                     ??L3G4200D_SendACK_0: (+1)
+   \   0000001C   0x2001             MOVS     R0,#+1
+   \   0000001E   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000020   0x6008             STR      R0,[R1, #+0]
+     99          	Delay5us();
+   \                     ??L3G4200D_SendACK_1: (+1)
+   \   00000022   0x.... 0x....      BL       Delay5us
+    100          	SCL=1;
+   \   00000026   0x2001             MOVS     R0,#+1
+   \   00000028   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   0000002A   0x6008             STR      R0,[R1, #+0]
+    101          	Delay5us();
+   \   0000002C   0x.... 0x....      BL       Delay5us
+    102          	SCL=0; //清时钟线，钳住I2C总线以便继续接收
+   \   00000030   0x2000             MOVS     R0,#+0
+   \   00000032   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000034   0x6008             STR      R0,[R1, #+0]
+    103          	//dwt_delay_us(2000);
+    104            
+    105            
+    106            
+    107            
+    108            /*if(ack_main)GY_SDA=0;
+    109              else GY_SDA = 1;             //写应答信号
+    110              Delay5us();                
+    111          
+    112              GY_SCL = 1;                    //拉高时钟线
+    113              Delay5us();               //延时
+    114              GY_SCL = 0;       //拉低时钟线   */              
+    115          }
+   \   00000036   0xBD01             POP      {R0,PC}          ;; return
+    116          
+    117          /**************************************
+    118          接收应答信号
+    119          **************************************/
+    120          /*uchar L3G4200D_RecvACK()
+    121          {
+    122              GY_SCL = 1;                    //拉高时钟线
+    123              Delay5us();                 //延时
+    124              GY_CY = SDA;                   //读应答信号
+    125              GY_SCL = 0;                    //拉低时钟线
+    126              Delay5us();                 //延时
+    127          
+    128              return CY;
+    129          }
+    130          */
+    131          /**************************************
+    132          向IIC总线发送一个字节数据
+    133          **************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    134          unsigned char Send_Byte(unsigned char c)
+    135          //字节发送程序
+    136          {
+   \                     Send_Byte: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    137          	
+    138          	unsigned char BitCnt;
+    139                  //unsigned char a;
+    140          	SCL_Out;
+   \   00000004   0x2001             MOVS     R0,#+1
+   \   00000006   0x....             LDR.N    R1,??DataTable5_2  ;; 0x43fe02b0
+   \   00000008   0x6008             STR      R0,[R1, #+0]
+    141          	SDA_Out;	
+   \   0000000A   0x2001             MOVS     R0,#+1
+   \   0000000C   0x....             LDR.N    R1,??DataTable5_3  ;; 0x43fe02b4
+   \   0000000E   0x6008             STR      R0,[R1, #+0]
+    142          //	asm("nop");
+    143          
+    144          
+    145          	for(BitCnt=0;BitCnt<8;BitCnt++) //要传送的数据长度为8位
+   \   00000010   0x2500             MOVS     R5,#+0
+   \   00000012   0xE00E             B.N      ??Send_Byte_0
+    146          	{
+    147          		SCL=0;
+    148          		if(c&0x80) SDA=1; //判断发送位
+    149          		else SDA=0;
+   \                     ??Send_Byte_1: (+1)
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000018   0x6008             STR      R0,[R1, #+0]
+    150          		c<<=1;
+   \                     ??Send_Byte_2: (+1)
+   \   0000001A   0x0064             LSLS     R4,R4,#+1
+    151          		Delay5us();
+   \   0000001C   0x.... 0x....      BL       Delay5us
+    152          		SCL=1; //置时钟线为高，通知被控器开始接收数据位
+   \   00000020   0x2001             MOVS     R0,#+1
+   \   00000022   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000024   0x6008             STR      R0,[R1, #+0]
+    153          		Delay5us();
+   \   00000026   0x.... 0x....      BL       Delay5us
+    154          		SCL=0;
+   \   0000002A   0x2000             MOVS     R0,#+0
+   \   0000002C   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   0000002E   0x6008             STR      R0,[R1, #+0]
+   \   00000030   0x1C6D             ADDS     R5,R5,#+1
+   \                     ??Send_Byte_0: (+1)
+   \   00000032   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
+   \   00000034   0x2D08             CMP      R5,#+8
+   \   00000036   0xDA08             BGE.N    ??Send_Byte_3
+   \   00000038   0x2000             MOVS     R0,#+0
+   \   0000003A   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   0000003C   0x6008             STR      R0,[R1, #+0]
+   \   0000003E   0x0620             LSLS     R0,R4,#+24
+   \   00000040   0xD5E8             BPL.N    ??Send_Byte_1
+   \   00000042   0x2001             MOVS     R0,#+1
+   \   00000044   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000046   0x6008             STR      R0,[R1, #+0]
+   \   00000048   0xE7E7             B.N      ??Send_Byte_2
+    155          	}
+    156          	Delay5us();
+   \                     ??Send_Byte_3: (+1)
+   \   0000004A   0x.... 0x....      BL       Delay5us
+    157          	SDA=1; //8位发送完后释放数据线，准备接收应答位
+   \   0000004E   0x2001             MOVS     R0,#+1
+   \   00000050   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000052   0x6008             STR      R0,[R1, #+0]
+    158          	Delay5us();
+   \   00000054   0x.... 0x....      BL       Delay5us
+    159          	SCL=1;
+   \   00000058   0x2001             MOVS     R0,#+1
+   \   0000005A   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   0000005C   0x6008             STR      R0,[R1, #+0]
+    160          	//SDA_In;
+    161          	Delay5us();
+   \   0000005E   0x.... 0x....      BL       Delay5us
+    162          	/*if(SDA_Read==1) a=ack;
+    163          	else a=no_ack; //判断是否接收到应答信号*/
+    164          	SCL=0;
+   \   00000062   0x2000             MOVS     R0,#+0
+   \   00000064   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000066   0x6008             STR      R0,[R1, #+0]
+    165          	return ack;
+   \   00000068   0x2001             MOVS     R0,#+1
+   \   0000006A   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+    166            
+    167            /*unsigned char i; 
+    168          	SDA_Out;
+    169          	for(i=0;i<8;i++)
+    170          	{
+    171          		SCL=0;
+    172          		if((SendChar<<i)&0x80)
+    173          		  SDA=1;                        //判断发送位
+    174          		else 
+    175          		  SDA=0;
+    176          		Delay5us();
+    177          		SCL=1;
+    178          		Delay5us();
+    179          		SCL=0;
+    180          	}
+    181          	Delay5us();
+    182          	SDA=1;                            //发送完8bit，释放总线准备接收应答位
+    183          	Delay5us();
+    184          	SCL=1;
+    185          	Delay5us();
+    186          	SCL=0; */
+    187          }
+    188          /**************************************
+    189          从IIC总线接收一个字节数据
+    190          **************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    191          unsigned char Read_Byte(void)
+    192          //字节接收程序
+    193          {
+   \                     Read_Byte: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+    194            unsigned char retc;
+    195          	unsigned char BitCnt;
+    196          	retc=0;
+   \   00000002   0x2400             MOVS     R4,#+0
+    197          	SDA_Out;
+   \   00000004   0x2001             MOVS     R0,#+1
+   \   00000006   0x....             LDR.N    R1,??DataTable5_3  ;; 0x43fe02b4
+   \   00000008   0x6008             STR      R0,[R1, #+0]
+    198          	Delay5us();
+   \   0000000A   0x.... 0x....      BL       Delay5us
+    199          	SDA=1; //置数据线为输入方式
+   \   0000000E   0x2001             MOVS     R0,#+1
+   \   00000010   0x....             LDR.N    R1,??DataTable5_4  ;; 0x43fe0034
+   \   00000012   0x6008             STR      R0,[R1, #+0]
+    200          	SDA_In;
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x....             LDR.N    R1,??DataTable5_3  ;; 0x43fe02b4
+   \   00000018   0x6008             STR      R0,[R1, #+0]
+    201          	Delay5us();
+   \   0000001A   0x.... 0x....      BL       Delay5us
+    202          	for(BitCnt=0;BitCnt<8;BitCnt++)
+   \   0000001E   0x2500             MOVS     R5,#+0
+   \   00000020   0xE012             B.N      ??Read_Byte_0
+    203          	{
+    204          		//dwt_delay_us(1000);
+    205          		SCL=0; //置时钟线为低，准备接收数据位
+   \                     ??Read_Byte_1: (+1)
+   \   00000022   0x2000             MOVS     R0,#+0
+   \   00000024   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000026   0x6008             STR      R0,[R1, #+0]
+    206          		Delay5us();
+   \   00000028   0x.... 0x....      BL       Delay5us
+    207          		SCL=1; //置时钟线为高使数据线上数据有效
+   \   0000002C   0x2001             MOVS     R0,#+1
+   \   0000002E   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000030   0x6008             STR      R0,[R1, #+0]
+    208          		Delay5us();
+   \   00000032   0x.... 0x....      BL       Delay5us
+    209          		
+    210          		retc=retc<<1;
+   \   00000036   0x0064             LSLS     R4,R4,#+1
+    211          		if(SDA_Read==1) retc=retc+1; //读数据位,接收的数据位放入retc中
+   \   00000038   0x....             LDR.N    R0,??DataTable5_6  ;; 0x43fe0234
+   \   0000003A   0x6800             LDR      R0,[R0, #+0]
+   \   0000003C   0x2801             CMP      R0,#+1
+   \   0000003E   0xD100             BNE.N    ??Read_Byte_2
+   \   00000040   0x1C64             ADDS     R4,R4,#+1
+    212          		Delay5us();
+   \                     ??Read_Byte_2: (+1)
+   \   00000042   0x.... 0x....      BL       Delay5us
+    213          		
+    214          	}
+   \   00000046   0x1C6D             ADDS     R5,R5,#+1
+   \                     ??Read_Byte_0: (+1)
+   \   00000048   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
+   \   0000004A   0x2D08             CMP      R5,#+8
+   \   0000004C   0xDBE9             BLT.N    ??Read_Byte_1
+    215          	SCL=0;
+   \   0000004E   0x2000             MOVS     R0,#+0
+   \   00000050   0x....             LDR.N    R1,??DataTable5_5  ;; 0x43fe0030
+   \   00000052   0x6008             STR      R0,[R1, #+0]
+    216          	Delay5us();
+   \   00000054   0x.... 0x....      BL       Delay5us
+    217          	return(retc);
+   \   00000058   0x0020             MOVS     R0,R4
+   \   0000005A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000005C   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+    218            
+    219            
+    220            /*unsigned char i;
+    221            unsigned char ReadChar;
+    222          	ReadChar=0;
+    223          	SCL=0;
+    224          	Delay5us();
+    225          	SDA_Out;
+    226          	SDA=1;                            //置数据线为输入方式
+    227          	SDA_In;                       
+    228          	for(i=0;i<8;i++)
+    229          	{
+    230          		Delay5us();
+    231          		SCL=0;                          //置时钟线为低，准备接收数据位
+    232          		Delay5us();
+    233          		SCL=1;                          //置时钟线为高，使数据线上数据有效
+    234          		Delay5us();
+    235          		ReadChar<<=1;
+    236          		if(SDA_Read)
+    237          		ReadChar+=1;                    //读数据位，将接收的数据存c
+    238          	}
+    239          	SDA_Out;
+    240          	SCL=0;
+    241          	return ReadChar;*/
+    242          }
+    243          //单字节写入*******************************************
+    244          
+
+   \                                 In section .text, align 2, keep-with-next
+    245          void GY_WriteByte(unsigned char Address, unsigned char Thedata)
+    246          //写入
+    247          {
+   \                     GY_WriteByte: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+    248          	IIC_Start();		                  //启动
+   \   00000006   0x.... 0x....      BL       IIC_Start
+    249          	Send_Byte(SlaveAddress);	                //写入设备ID及写信号
+   \   0000000A   0x2042             MOVS     R0,#+66
+   \   0000000C   0x.... 0x....      BL       Send_Byte
+    250          	Send_Byte(Address);	              //X地址
+   \   00000010   0x0020             MOVS     R0,R4
+   \   00000012   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000014   0x.... 0x....      BL       Send_Byte
+    251          	Send_Byte(Thedata);	              //写入设备ID及读信
+   \   00000018   0x0028             MOVS     R0,R5
+   \   0000001A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000001C   0x.... 0x....      BL       Send_Byte
+    252          	IIC_Stop();
+   \   00000020   0x.... 0x....      BL       IIC_Stop
+    253          }
+   \   00000024   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+    254          
+    255          //单字节读取*****************************************
+
+   \                                 In section .text, align 2, keep-with-next
+    256          unsigned char GY_ReadByte(unsigned char Address)
+    257          
+    258          {
+   \                     GY_ReadByte: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    259                 unsigned char Ret;
+    260          	IIC_Start();		                  //启动
+   \   00000004   0x.... 0x....      BL       IIC_Start
+    261          	Send_Byte(SlaveAddress);	                //写入设备ID及写信号
+   \   00000008   0x2042             MOVS     R0,#+66
+   \   0000000A   0x.... 0x....      BL       Send_Byte
+    262          	Send_Byte(Address);	              //X地址
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000012   0x.... 0x....      BL       Send_Byte
+    263          	IIC_Start();		                  //重新发送开始
+   \   00000016   0x.... 0x....      BL       IIC_Start
+    264          	Send_Byte(SlaveAddress+1);	                //写入设备ID及读信
+   \   0000001A   0x2043             MOVS     R0,#+67
+   \   0000001C   0x.... 0x....      BL       Send_Byte
+    265          	Ret=Read_Byte();	                //读取一字节
+   \   00000020   0x.... 0x....      BL       Read_Byte
+   \   00000024   0x0004             MOVS     R4,R0
+    266          	IIC_Stop();
+   \   00000026   0x.... 0x....      BL       IIC_Stop
+    267          	return Ret;
+   \   0000002A   0x0020             MOVS     R0,R4
+   \   0000002C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000002E   0xBD10             POP      {R4,PC}          ;; return
+    268          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5:
+   \   00000000   0x400FF000         DC32     0x400ff000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_1:
+   \   00000000   0x........         DC32     pta_IIC
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_2:
+   \   00000000   0x43FE02B0         DC32     0x43fe02b0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_3:
+   \   00000000   0x43FE02B4         DC32     0x43fe02b4
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_4:
+   \   00000000   0x43FE0034         DC32     0x43fe0034
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_5:
+   \   00000000   0x43FE0030         DC32     0x43fe0030
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_6:
+   \   00000000   0x43FE0234         DC32     0x43fe0234
+    269          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   Delay5us
+       8   GY_ReadByte
+         8   -> IIC_Start
+         8   -> IIC_Stop
+         8   -> Read_Byte
+         8   -> Send_Byte
+      16   GY_WriteByte
+        16   -> IIC_Start
+        16   -> IIC_Stop
+        16   -> Send_Byte
+       8   IIC_Start
+         8   -> Delay5us
+       8   IIC_Stop
+         8   -> Delay5us
+       8   L3G4200D_SendACK
+         8   -> Delay5us
+      24   LPLD_IIC_Init
+         8   -> LPLD_GPIO_Init
+        24   -> __aeabi_memcpy4
+      16   Read_Byte
+        16   -> Delay5us
+      16   Send_Byte
+        16   -> Delay5us
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable5
+       4  ??DataTable5_1
+       4  ??DataTable5_2
+       4  ??DataTable5_3
+       4  ??DataTable5_4
+       4  ??DataTable5_5
+       4  ??DataTable5_6
+      22  Delay5us
+      48  GY_ReadByte
+      38  GY_WriteByte
+      48  IIC_Start
+      48  IIC_Stop
+      56  L3G4200D_SendACK
+      54  LPLD_IIC_Init
+      94  Read_Byte
+     108  Send_Byte
+      20  pta_IIC
+
+ 
+  20 bytes in section .bss
+ 544 bytes in section .text
+ 
+ 544 bytes of CODE memory
+  20 bytes of DATA memory
+
+Errors: none
+Warnings: none
